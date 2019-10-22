@@ -8,11 +8,9 @@ var settings = {
 	scripts: true,
 	polyfills: true,
 	styles: true,
-	svgs: true,
 	copy: true,
 	reload: true
 };
-
 
 /**
  * Paths to project folders
@@ -20,27 +18,22 @@ var settings = {
 
 var paths = {
 	input: 'src/',
-	output: 'dist/',
+	output: 'minified/',
 	scripts: {
 		input: 'src/js/*',
 		polyfills: '.polyfill.js',
-		output: 'dist/js/'
+		output: 'minified/js/'
 	},
 	styles: {
-		input: 'src/sass/**/*.{scss,sass,css}',
-		output: 'dist/css/'
-	},
-	svgs: {
-		input: 'src/svg/*.svg',
-		output: 'dist/svg/'
+		input: 'src/css/**/*.css',
+		output: 'minified/css/'
 	},
 	copy: {
 		input: 'src/copy/**/*',
-		output: 'dist/'
+		output: 'minified/'
 	},
-	reload: './dist/'
+	reload: './minified/'
 };
-
 
 /**
  * Template for banner to add to file headers
@@ -63,7 +56,6 @@ var banner = {
 		' | <%= package.repository.url %>' +
 		' */\n'
 };
-
 
 /**
  * Gulp Packages
@@ -92,13 +84,8 @@ var prefix = require('autoprefixer');
 var minify = require('cssnano');
 var uglifycss = require('gulp-uglifycss');
 
-
-// SVGs
-var svgmin = require('gulp-svgmin');
-
 // BrowserSync
 var browserSync = require('browser-sync');
-
 
 /**
  * Gulp Tasks
@@ -110,7 +97,7 @@ var cleanDist = function (done) {
 	// Make sure this feature is activated before running
 	if (!settings.clean) return done();
 
-	// Clean the dist folder
+	// Clean the minified folder
 	del.sync([
 		paths.output
 	]);
@@ -190,7 +177,7 @@ var lintScripts = function (done) {
 
 var productionScripts = function (done) {
 
-	return src('dist/js/*.min.js')
+	return src('minified/js/*.min.js')
 	  .pipe(concat('./main.min.js'))
 	  .pipe(dest('./minified/'));
 
@@ -204,25 +191,9 @@ var buildStyles = function (done) {
 
 	// Run tasks on all Sass files
 	return src(paths.styles.input)
-
-
-
 		  .pipe(uglifycss({
 		  }))
 		  .pipe(dest(paths.styles.output));
-
-};
-
-// Optimize SVG files
-var buildSVGs = function (done) {
-
-	// Make sure this feature is activated before running
-	if (!settings.svgs) return done();
-
-	// Optimize SVG files
-	return src(paths.svgs.input)
-		.pipe(svgmin())
-		.pipe(dest(paths.svgs.output));
 
 };
 
@@ -281,7 +252,6 @@ exports.default = series(
 		buildScripts,
 		lintScripts,
 		buildStyles,
-		buildSVGs,
 		copyFiles
 	)
 );
