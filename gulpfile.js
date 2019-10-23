@@ -83,6 +83,7 @@ var postcss = require('gulp-postcss');
 var prefix = require('autoprefixer');
 var minify = require('cssnano');
 var uglifycss = require('gulp-uglifycss');
+var purge = require('gulp-css-purge');
 
 // BrowserSync
 var browserSync = require('browser-sync');
@@ -193,6 +194,11 @@ var buildStyles = function (done) {
 	return src(paths.styles.input)
 		  .pipe(uglifycss({
 		  }))
+		  .pipe(purge({
+            trim : true,
+            shorten : true,
+            verbose : true
+        }))
 		  .pipe(dest(paths.styles.output));
 
 };
