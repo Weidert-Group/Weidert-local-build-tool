@@ -8,7 +8,6 @@ var settings = {
 	scripts: true,
 	polyfills: true,
 	styles: true,
-	copy: true,
 	reload: true
 };
 
@@ -27,10 +26,6 @@ var paths = {
 	styles: {
 		input: 'src/css/**/*.css',
 		output: 'minified/css/'
-	},
-	copy: {
-		input: 'src/copy/**/*',
-		output: 'minified/'
 	},
 	reload: './minified/'
 };
@@ -83,9 +78,6 @@ var postcss = require('gulp-postcss');
 var prefix = require('autoprefixer');
 var minify = require('cssnano');
 var uglifycss = require('gulp-uglifycss');
-
-// BrowserSync
-var browserSync = require('browser-sync');
 
 /**
  * Gulp Tasks
@@ -197,49 +189,6 @@ var buildStyles = function (done) {
 
 };
 
-// Copy static files into output folder
-var copyFiles = function (done) {
-
-	// Make sure this feature is activated before running
-	if (!settings.copy) return done();
-
-	// Copy static files
-	return src(paths.copy.input)
-		.pipe(dest(paths.copy.output));
-
-};
-
-// Watch for changes to the src directory
-var startServer = function (done) {
-
-	// Make sure this feature is activated before running
-	if (!settings.reload) return done();
-
-	// Initialize BrowserSync
-	browserSync.init({
-		server: {
-			baseDir: paths.reload
-		}
-	});
-
-	// Signal completion
-	done();
-
-};
-
-// Reload the browser when files change
-var reloadBrowser = function (done) {
-	if (!settings.reload) return done();
-	browserSync.reload();
-	done();
-};
-
-// Watch for changes
-var watchSource = function (done) {
-	watch(paths.input, series(exports.default, reloadBrowser));
-	done();
-};
-
 /**
  * Export Tasks
  */
@@ -251,8 +200,7 @@ exports.default = series(
 	parallel(
 		buildScripts,
 		lintScripts,
-		buildStyles,
-		copyFiles
+		buildStyles
 	)
 );
 
@@ -260,12 +208,4 @@ exports.prodRdy = series(
 	parallel(
 		productionScripts
 	)
-);
-
-// Watch and reload
-// gulp watch
-exports.watch = series(
-	exports.default,
-	startServer,
-	watchSource
 );
