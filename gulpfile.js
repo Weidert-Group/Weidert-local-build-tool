@@ -19,8 +19,7 @@ var paths = {
 	input: 'src/',
 	output: 'minified/',
 	scripts: {
-		input: 'src/js/*',
-		polyfills: '.polyfill.js',
+		input: 'src/js/**/*.js',
 		output: 'minified/js/'
 	},
 	styles: {
@@ -101,11 +100,9 @@ var cleanDist = function (done) {
 
 // Repeated JavaScript tasks
 var jsTasks = lazypipe()
-	.pipe(optimizejs)
-	.pipe(dest, paths.scripts.output)
-	.pipe(rename, {suffix: '.min'})
 	.pipe(uglify)
 	.pipe(optimizejs)
+	.pipe(rename, {suffix: '.min'})
 	.pipe(dest, paths.scripts.output);
 
 // Lint, minify, and concatenate scripts
@@ -169,9 +166,9 @@ var lintScripts = function (done) {
 
 var productionScripts = function (done) {
 
-	return src('minified/js/*.min.js')
-	  .pipe(concat('./main.min.js'))
-	  .pipe(dest('./minified/'));
+	return src('./minified/js/**/global/*.min.js')
+	  .pipe(concat('./global.min.js'))
+	  .pipe(dest('./minifieds/'));
 
 };
 
