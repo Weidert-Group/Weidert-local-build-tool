@@ -13,6 +13,7 @@
 		"cssnano": "4.1.10",
 		"del": "3.0.0",
 		"eslint": "^6.5.1",
+		"fs": "0.0.1-security",
 		"gulp": "4.0.2",
 		"gulp-concat": "2.6.1",
 		"gulp-flatmap": "1.0.2",
@@ -27,6 +28,8 @@
 		"gulp-uglifycss": "^1.1.0",
 		"jshint": "2.9.6",
 		"jshint-stylish": "2.2.1",
-		"lazypipe": "1.0.1"
+		"lazypipe": "1.0.1",
+		"merge-stream": "^2.0.0",
+		"path": "^0.12.7"
 	}
 }

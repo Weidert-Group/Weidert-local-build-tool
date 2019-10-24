@@ -186,6 +186,39 @@ var buildStyles = function (done) {
 
 };
 
+var fs = require('fs');
+var path = require('path');
+var merge = require('merge-stream');
+
+var scriptsPath = 'src/js';
+
+function getFolders(dir) {
+    return fs.readdirSync(dir)
+      .filter(function(file) {
+        return fs.statSync(path.join(dir, file)).isDirectory();
+      });
+}
+
+var tinyScripts = function (done) {
+   var folders = getFolders(scriptsPath);
+
+   var tasks = folders.map(function(folder) {
+      // concat into foldername.js
+      // write to output
+      // minify
+      // rename to folder.min.js
+      // write to output again
+      return src(path.join(scriptsPath, folder, '/**/*.js'))
+        .pipe(concat(folder + '.js'))
+        .pipe(dest(paths.scripts.output + '/global'))
+        .pipe(uglify())
+        .pipe(rename(folder + '.min.js'))
+        .pipe(dest(paths.scripts.output + '/global'));
+   });
+
+   return merge(tasks);
+};
+
 /**
  * Export Tasks
  */
@@ -197,12 +230,7 @@ exports.default = series(
 	parallel(
 		buildScripts,
 		lintScripts,
-		buildStyles
-	)
-);
-
-exports.prodRdy = series(
-	parallel(
-		productionScripts
+		buildStyles,
+		tinyScripts
 	)
 );
