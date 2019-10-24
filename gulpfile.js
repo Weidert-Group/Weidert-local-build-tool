@@ -61,22 +61,21 @@ var del = require('del');
 var flatmap = require('gulp-flatmap');
 var lazypipe = require('lazypipe');
 var rename = require('gulp-rename');
-var header = require('gulp-header');
-var package = require('./package.json');
 
 // Scripts
 var jshint = require('gulp-jshint');
-var stylish = require('jshint-stylish');
 var concat = require('gulp-concat');
 var uglify = require('gulp-terser');
 var optimizejs = require('gulp-optimize-js');
 
 // Styles
-var sass = require('gulp-sass');
-var postcss = require('gulp-postcss');
-var prefix = require('autoprefixer');
-var minify = require('cssnano');
 var uglifycss = require('gulp-uglifycss');
+
+var fs = require('fs');
+var path = require('path');
+var merge = require('merge-stream');
+
+var scriptsPath = 'src/js';
 
 /**
  * Gulp Tasks
@@ -185,12 +184,6 @@ var buildStyles = function (done) {
 		  .pipe(dest(paths.styles.output));
 
 };
-
-var fs = require('fs');
-var path = require('path');
-var merge = require('merge-stream');
-
-var scriptsPath = 'src/js';
 
 function getFolders(dir) {
     return fs.readdirSync(dir)
