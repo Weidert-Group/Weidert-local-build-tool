@@ -78,9 +78,14 @@ var merge = require('merge-stream');
 
 var scriptsPath = 'src/js';
 
+// CSS clean
+var gulp = require('gulp');
+var cleanCSS = require('gulp-clean-css');
+
 /**
  * Gulp Tasks
  */
+
 
 // Remove pre-existing content from output folders
 var cleanDist = function (done) {
@@ -180,8 +185,7 @@ var buildStyles = function (done) {
 
 	// Run tasks on all Sass files
 	return src(paths.styles.input)
-		  .pipe(uglifycss({
-		  }))
+		  .pipe(cleanCSS({compatibility: 'ie8'}))
 		  .pipe(dest(paths.styles.output));
 
 };
@@ -226,5 +230,12 @@ exports.default = series(
 		lintScripts,
 		buildStyles,
 		tinyScripts
+	)
+);
+
+exports.cssmin = series(
+	cleanDist,
+	parallel(
+		buildStyles
 	)
 );

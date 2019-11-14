@@ -1,0 +1,1523 @@
+.SecondaryMenu ul li.active a {
+    color: #484c4d
+}
+
+.SecondaryMenu ul li.active {
+    background: #fff
+}
+
+.top-cta {
+    background: url(https://www.gflesch.com/hubfs/Backgrounds/Circuit-board-blue-background-1000x300-25.jpg) no-repeat center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-color: #d15f16;
+    color: #fff;
+    border-top-style: solid;
+    border-top-width: 4px;
+    border-top-color: #fff;
+    border-bottom-style: solid;
+    border-bottom-width: 4px;
+    border-bottom-color: #fff;
+    padding: 10px 0
+}
+
+.top-cta h2 {
+    color: #fff;
+    line-height: 40px
+}
+
+.top-cta .solid_button_white_100 a {
+    margin: 40px 10px
+}
+
+.interactive-info {
+    max-width: 90%
+}
+
+@media (min-width:900px) {
+    .mspp-menu-section ul,
+    .pcp-menu-section ul {
+        align-items: center;
+        display: flex!important;
+        justify-content: center;
+        line-height: 18px
+    }
+    .custom-menu-primary ul li:nth-child(2) ul ul {
+        margin-left: 0!important
+    }
+    .custom-menu-primary ul li:nth-child(4) ul {
+        min-width: 197px
+    }
+    .custom-menu-primary ul li:nth-child(2) ul {
+        width: 550px!important
+    }
+    .custom-menu-primary ul li:nth-child(1) ul li {
+        width: 230px!important;
+        float: left!important
+    }
+    .custom-menu-primary ul li:nth-child(2) ul li {
+        width: 260px!important;
+        float: left!important
+    }
+    .custom-menu-primary ul li:nth-child(2) ul li ul {
+        position: relative!important;
+        left: 0!important;
+        max-width: 270px!important
+    }
+    .custom-menu-primary ul li:nth-child(2) ul li ul li {
+        width: 95%!important
+    }
+    .custom-menu-primary ul li:nth-child(2) ul li ul li a:hover {
+        background: #545960!important;
+        color: #fff!important
+    }
+    .outer-video {
+        overflow: hidden;
+        max-height: 550px;
+        position: relative
+    }
+    .custom-menu-primary ul li:nth-child(2) ul li a:hover {
+        background: #fff!important;
+        color: #585a5a!important
+    }
+    .custom-menu-primary ul li:nth-child(2) ul li.hs-item-has-children {
+        overflow-x: hidden!important
+    }
+    .custom-menu-primary ul li:nth-child(2) ul li:nth-child(1) ul {
+        opacity: 1!important;
+        visibility: visible!important
+    }
+    .custom-menu-primary ul li:nth-child(2) ul li:nth-child(2) ul {
+        opacity: 1!important;
+        visibility: visible!important
+    }
+    .custom-menu-primary ul>li:nth-child(2)>ul>li:nth-child(1)>a {
+        font-size: 20px!important;
+        color: #003087;
+        padding-left: 10px
+    }
+    .custom-menu-primary ul>li:nth-child(2)>ul>li:nth-child(2)>a {
+        font-size: 20px!important;
+        color: #003087;
+        padding-left: 10px
+    }
+    .custom-menu-primary ul>li:nth-child(2)>ul>li:nth-child(1)>ul li a {
+        font-size: 14px!important;
+        color: #545960!important;
+        padding-left: 10px
+    }
+    .custom-menu-primary ul>li:nth-child(2)>ul>li:nth-child(2)>ul li a {
+        font-size: 14px!important;
+        color: #545960;
+        padding-left: 10px
+    }
+    .custom-menu-primary ul>li:nth-child(2)>ul>li:nth-child(2)>ul li a:hover {
+        font-size: 14px!important;
+        color: #fff!important
+    }
+    .custom-menu-primary ul li:nth-child(1) ul li:nth-child(1) a,
+    .custom-menu-primary ul li:nth-child(3) ul li:nth-child(1) a,
+    .custom-menu-primary ul li:nth-child(4) ul li:nth-child(1) a,
+    .custom-menu-primary ul li:nth-child(5) ul li:nth-child(1) a,
+    .custom-menu-primary ul li:nth-child(6) ul li:nth-child(1) a,
+    .custom-menu-primary ul li:nth-child(7) ul li:nth-child(1) a,
+    .custom-menu-primary ul li:nth-child(8) ul li:nth-child(1) a {
+        font-size: 18px!important;
+        color: #003087!important;
+        padding-left: 10px
+    }
+    .custom-menu-primary ul li:nth-child(1)>ul>li:nth-child(1),
+    .custom-menu-primary ul li:nth-child(3)>ul>li:nth-child(1),
+    .custom-menu-primary ul li:nth-child(4)>ul>li:nth-child(1),
+    .custom-menu-primary ul li:nth-child(5)>ul>li:nth-child(1),
+    .custom-menu-primary ul li:nth-child(6)>ul>li:nth-child(1),
+    .custom-menu-primary ul li:nth-child(7)>ul>li:nth-child(1),
+    .custom-menu-primary ul li:nth-child(8)>ul>li:nth-child(1) {
+        list-style-type: none!important
+    }
+    .custom-menu-primary ul li:nth-child(2) ul li:nth-child(1) ul li a:hover {
+        background: #545960!important;
+        color: #fff!important
+    }
+    .custom-menu-primary ul li:nth-child(3) ul li:nth-child(1) a:hover,
+    .custom-menu-primary ul li:nth-child(4) ul li:nth-child(1) a:hover,
+    .custom-menu-primary ul li:nth-child(5) ul li:nth-child(1) a:hover,
+    .custom-menu-primary ul li:nth-child(6) ul li:nth-child(1) a:hover,
+    .custom-menu-primary ul li:nth-child(7) ul li:nth-child(1) a:hover,
+    .custom-menu-primary ul>li:nth-child(1)>ul>li:nth-child(1)>a:hover {
+        background: #fff!important;
+        color: #003087!important
+    }
+    .custom-menu-primary ul li:nth-child(2) ul li:nth-child(1) ul li {
+        padding-left: 10px
+    }
+    .custom-menu-primary ul li:nth-child(2) ul li:nth-child(2) ul li {
+        padding-left: 10px!important
+    }
+    .custom-menu-primary ul li:nth-child(2) ul li:nth-child(1) ul li a,
+    .custom-menu-primary ul li:nth-child(2) ul li:nth-child(2) ul li a {
+        font-size: 14px!important
+    }
+    .custom-menu-primary ul li:nth-child(2) ul {
+        padding-left: 0!important
+    }
+    .custom-menu-primary ul li:nth-child(2) ul li ul {
+        padding-left: 5px!important
+    }
+    .custom-menu-primary ul li:nth-child(2) ul li {
+        border-right: 1px solid #ccc
+    }
+    .custom-menu-primary ul li:nth-child(2) ul li ul li {
+        border-right: none!important
+    }
+    .custom-menu-primary ul li:nth-child(2) ul li:nth-child(2) {
+        border-right: none!important
+    }
+    .hs-menu-wrapper.hs-menu-flow-horizontal>ul li.hs-item-has-children {
+        list-style-type: none!important
+    }
+    .custom-menu-primary ul li {
+        list-style-position: inside
+    }
+    .custom-menu-primary ul li:hover {
+        color: #fff
+    }
+    .custom-menu-primary ul li:nth-child(1)>ul {
+        z-index: 999999!important
+    }
+    .hs-menu-wrapper.hs-menu-flow-horizontal.flyouts>ul li.hs-item-has-children ul.hs-menu-children-wrapper li.hs-item-has-children ul.hs-menu-children-wrapper {
+        visibility: unset!important
+    }
+}
+
+.ai-callout-section {
+    background-color: #003087;
+    background-attachment: fixed;
+    background-image: url(https://www.gflesch.com/hubfs/Backgrounds/AI-solutions-header-1B_Darkened.png);
+    background-repeat: no-repeat;
+    width: 100%;
+    background-size: cover;
+    padding: 40px 0;
+    margin: 0
+}
+
+.pps-cta-section {
+    background-color: #003087;
+    background-image: url(http://cdn2.hubspot.net/hubfs/2259185/Gordon-Flesch-Site/Background-Images/ThinkstockPhotos-461104693_2000_80_v2.jpg);
+    background-repeat: no-repeat;
+    width: 100%;
+    background-size: cover;
+    padding: 40px 0;
+    margin: 0
+}
+
+.cyber-cta-section {
+    background-color: #000;
+    background-attachment: fixed;
+    background-image: url(https://www.gflesch.com/hubfs/images/Landing_Page_Images/Header-Images-2019/Cybersecurity_LP_Header.jpg);
+    background-repeat: no-repeat;
+    width: 100%;
+    background-size: cover;
+    padding: 40px 0;
+    margin: 0
+}
+
+.mps-cta-section {
+    color: #fff;
+    background-color: #000;
+    background-attachment: fixed;
+    background-position: right;
+    background-image: url(https://www.gflesch.com/hubfs/Gordon-Flesch-Site/MPS-Pillar/MPS-pillar-header2.png);
+    background-repeat: no-repeat;
+    width: 100%;
+    background-size: cover;
+    padding: 40px;
+    margin: 0
+}
+
+.mps-cta-section h2 {
+    color: #fff
+}
+
+.banner-section-image img {
+    display: none
+}
+
+.banner-section-image .hs-editor-editable img {
+    display: block
+}
+
+.banner-section-wraper {
+    background-size: cover;
+    background-position: top center;
+    min-height: 404px!important;
+    position: relative
+}
+
+#banner-section-wraper-pillar-page {
+    height: 50vh
+}
+
+@media (max-width:768px) {
+    #banner-section-wraper-pillar-page {
+        height: 100vh
+    }
+    .managed-service-parent-section {
+        position: relative
+    }
+    .bread-menu {
+        padding: 0!important;
+        margin: 0 0 30px 0!important;
+        position: absolute!important;
+        width: 100%!important;
+        top: -70px!important;
+        display: inline-block!important
+    }
+    .pcp-menu-section .row-fluid-wrapper:last-child .hs-menu-wrapper.hs-menu-flow-horizontal>ul {
+        margin-bottom: 0;
+        position: absolute;
+        z-index: 9999;
+        background-color: #fff
+    }
+    .msp-subhead-section .msp-subhead-section-2 {
+        padding: 60px 0 0!important
+    }
+    .bread-menu .mobile-trigger {
+        display: block!important
+    }
+}
+
+.WWS-banner-heading h1 {
+    padding: 180px 0
+}
+
+.wws-conatiner-2-menu-items ul li a {
+    max-width: 250px!important;
+    padding: 20px 150px!important;
+    font-size: 18px;
+    font-weight: 800;
+    color: #fff
+}
+
+.wws-conatiner-2 {
+    background-color: #53585f;
+    height: 65px
+}
+
+.esc {
+    background-color: rgba(0, 0, 0, .1);
+    text-align: center;
+    padding: 25px 25px 25px;
+    margin-bottom: 25px;
+    height: 250px
+}
+
+.esc-flipper {
+    text-align: center;
+    padding: 50px 25px 25px;
+    margin-bottom: 25px;
+    height: 250px
+}
+
+.epc {
+    width: 17.9%!important;
+    border: 2px solid #f2f2f2;
+    background-color: #f2f2f2;
+    text-align: center;
+    padding: 20px 10px 10px;
+    margin-bottom: 25px;
+    min-height: 200px!important
+}
+
+.epc:hover {
+    border: 2px solid #dfdfdf;
+    background: #fff
+}
+
+.education-service-c-1 {
+    background-image: url(http://cdn2.hubspot.net/hubfs/2259185/Gordon-Flesch-Site/Page-Images/education-services/Managed_IT_EDU.jpg);
+    background-attachment: scroll;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 0 0
+}
+
+.education-service-c-2 {
+    background-image: url(http://cdn2.hubspot.net/hubfs/2259185/Gordon-Flesch-Site/Page-Images/Managed_Services/iStock_71163023_500x500HighScreen.jpg);
+    background-attachment: scroll;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 0 0
+}
+
+.education-service-c-3 {
+    background-image: url(http://cdn2.hubspot.net/hubfs/2259185/Gordon-Flesch-Site/Page-Images/education-services/Managed_Print_Solutions_EDU.jpg);
+    background-attachment: scroll;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 0 0
+}
+
+.education-service-c-4 {
+    background-image: url(http://cdn2.hubspot.net/hubfs/2259185/Gordon-Flesch-Site/Page-Images/20160824_GFlesch_-326_400x400High.jpg);
+    background-attachment: scroll;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 0 0
+}
+
+.education-service-c-5 {
+    background-image: url(http://cdn2.hubspot.net/hubfs/2259185/Gordon-Flesch-Site/Page-Images/education-services/Asset_Management_EDU.jpg);
+    background-attachment: scroll;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 0 0
+}
+
+.education-service-c-6 {
+    background-image: url(http://cdn2.hubspot.net/hubfs/2259185/Gordon-Flesch-Site/Page-Images/education-services/Onsite_Services_EDU.jpg);
+    background-attachment: scroll;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 0 0
+}
+
+.epc img:hover {
+    -webkit-filter: drop-shadow(5px 5px 5px #666);
+    filter: drop-shadow(5px 5px 5px #666)
+}
+
+.epc h3 {
+    color: #d15f16;
+    font-size: 22px;
+    line-height: 21px;
+    font-weight: 500
+}
+
+.esc h4 {
+    color: #fff;
+    font-size: 36px;
+    line-height: 36px;
+    font-weight: 800;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, .8)
+}
+
+.esc-flipper h4 {
+    color: #fff;
+    font-size: 36px;
+    line-height: 24px;
+    font-weight: 800;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, .8)
+}
+
+.esc-flipper .esc .border_button_wht {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 1)
+}
+
+.wws-sc-es {
+    text-align: center
+}
+
+.wws-issu-text-content {
+    padding: 30px 0
+}
+
+.education-service-contents {
+    padding: 30px 0
+}
+
+.wws-cta-section {
+    background-color: #a6aaa9
+}
+
+.solid_button_drkgrey {
+    float: none!important
+}
+
+.solid_button_drkgrey a {
+    margin-right: 35px;
+    float: none
+}
+
+.careers-pg .solid_button_drkgrey a {
+    margin-right: 0!important
+}
+
+.pps-subhead-section-text {
+    padding: 30px 210px
+}
+
+.ppscbtn {
+    width: 435px;
+    margin: 0 auto
+}
+
+.pps-subhead-section-text {
+    text-align: center
+}
+
+.pps-subhead-container-1 p {
+    text-align: left
+}
+
+.pps-hardware-cont {
+    text-align: center;
+    padding: 30px 190px
+}
+
+.ppshsc,
+.ppssc {
+    text-align: center;
+    padding: 25px 10px;
+    margin-bottom: 28px
+}
+
+.CambridgeIcons {
+    text-align: center;
+    padding: 25px 10px;
+    margin-bottom: 28px;
+    min-height: 340px!important;
+    border: 2px solid #f2f2f2;
+    background-color: #f2f2f2
+}
+
+.CambridgeIcons:hover {
+    border: 2px solid #dfdfdf;
+    background: #fff
+}
+
+.ppshsc {
+    border: 2px solid #f2f2f2;
+    background-color: #f2f2f2
+}
+
+.ppshsc:hover {
+    border: 2px solid #dfdfdf;
+    background: #fff
+}
+
+.ppssc {
+    border: 2px solid #f2f2f2;
+    background-color: #f2f2f2
+}
+
+.ppssc:hover {
+    border: 2px solid #dfdfdf;
+    background: #fff
+}
+
+.pps-hardware-s-category img {
+    width: 35%
+}
+
+.pps-hardware-s-category img:hover {
+    -webkit-filter: drop-shadow(5px 5px 5px #666);
+    filter: drop-shadow(5px 5px 5px #666)
+}
+
+.ppshsc h3 {
+    color: #d15f16;
+    font-size: 22px;
+    line-height: 21px;
+    font-weight: 500
+}
+
+.ppssc h3 {
+    color: #d15f16;
+    font-size: 22px;
+    line-height: 21px;
+    font-weight: 500
+}
+
+.get-down {
+    border: 2px solid #dfdfdf;
+    background: #fff
+}
+
+.pps-resources-section {
+    background-color: #003087;
+    background-image: url(http://cdn2.hubspot.net/hubfs/2259185/Gordon-Flesch-Site/Background-Images/bckgrnd-2.jpg);
+    background-repeat: no-repeat;
+    width: 100%;
+    background-size: cover;
+    padding: 0 0 70px 0;
+    margin: 0
+}
+
+.pps-resource-cont {
+    text-align: center;
+    padding: 50px 0
+}
+
+.ppsrsc {
+    text-align: center;
+    background-color: #fff;
+    padding: 0
+}
+
+.nmi {
+    text-align: center;
+    max-width: 600px;
+    margin: auto
+}
+
+.need-something-contact-us {
+    padding: 60px 0 60px
+}
+
+.banner-container {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%)
+}
+
+#banner-conatiner-pillar-page {
+    padding: 10vh
+}
+
+.banner-container h1 {
+    text-transform: capitalize;
+    font-size: 58px;
+    line-height: 1em;
+    font-weight: 900;
+    color: #fff;
+    padding: 0;
+    display: block;
+    margin: 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, .8);
+    font-family: HelveticaNeueETW01-75Bd, sans-serif
+}
+
+.banner-container h2 {
+    text-transform: capitalize;
+    font-size: 34px;
+    line-height: 60px;
+    font-weight: 900;
+    color: #fff;
+    padding: 0;
+    display: block;
+    margin: 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, .8);
+    font-family: HelveticaNeueETW01-75Bd, sans-serif
+}
+
+.products-child-banner-container h1 {
+    text-transform: capitalize;
+    font-size: 58px;
+    line-height: 60px;
+    font-weight: 900;
+    color: #fff;
+    padding: 0;
+    display: block;
+    margin: 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, .8);
+    font-family: HelveticaNeueETW01-75Bd, sans-serif
+}
+
+.msp-subhead-text {
+    padding: 30px 210px;
+    text-align: center
+}
+
+.pps-cta-section-button img {
+    width: 100%!important
+}
+
+.mspp-menu-section ul li a {
+    line-height: 18px;
+    white-space: normal!important;
+    padding: 20px 10px!important;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 700;
+    max-width: 132px!important;
+    color: #fff
+}
+
+.managed-service-parent-section {
+    background-color: #53585f
+}
+
+.managed-services-list-bg,
+.managed-services-list-right-bg {
+    margin-left: 0!important;
+    width: 50%!important;
+    margin: 0!important
+}
+
+.managed-services-list-bg img,
+.managed-services-list-right-bg img {
+    width: 100%!important;
+    max-height: 500px;
+    background-size: contain;
+    min-height: 500px
+}
+
+.managed-services-list-text {
+    padding: 100px 45px!important;
+    width: 50%;
+    margin: 0!important
+}
+
+.about-banner-container {
+    padding-top: 150px
+}
+
+.aps-heading h1 {
+    display: inline-block;
+    margin-bottom: 1px
+}
+
+.aps-heading p {
+    width: 325px;
+    display: block;
+    margin-top: 0
+}
+
+.ap-events img {
+    width: 100%!important
+}
+
+.ap-giving-back-section-image img,
+.ap-our-history-section-image img {
+    display: none
+}
+
+.ap-our-history-section-image .hs-editor-editable img {
+    display: block
+}
+
+.ap-giving-back-section-image .hs-editor-editable img {
+    display: block
+}
+
+.ap-giving-back-section,
+.ap-our-history-section {
+    background-size: cover;
+    background-position: top center;
+    padding: 0 15px
+}
+
+.ap-our-history-section {
+    border-bottom: 5px solid #333
+}
+
+.ap-giving-back,
+.ap-our-history {
+    padding: 20px 0
+}
+
+.ap-all-events {
+    margin-bottom: 20px
+}
+
+.ap-news-events,
+.ap-upcoming-events {
+    padding-top: 0
+}
+
+.ap-all-events h3 {
+    margin-top: 0
+}
+
+.ap-gfc-types-list ul li,
+.wpocn-menu-list ul li {
+    display: inline-block;
+    width: auto;
+    vertical-align: middle;
+    padding: 0 10px
+}
+
+.case-study-rss {
+    padding: 0 100px
+}
+
+.wpocn-text {
+    margin-top: 35px;
+    vertical-align: middle
+}
+
+@media (max-width:900px) {
+    .wpocn-text {
+        margin-top: 0;
+        vertical-align: middle
+    }
+}
+
+.ap-gfc-types-list ul li a {
+    font-size: 28px;
+    font-weight: 700
+}
+
+.ap-gfc-types-list ul,
+.wpocn-menu-list ul {
+    padding-left: 0
+}
+
+.ap-gfc-types-list {
+    text-align: center;
+    border-left: 0;
+    border-right: 0;
+    margin: 60px 0
+}
+
+.ap-gfc-types-list h2 {
+    color: #fff;
+    margin: 0 0 20px
+}
+
+.ap-upcoming-events-section {
+    background-color: #a6aaa9;
+    padding-bottom: 20px
+}
+
+.ap-upcoming-events {
+    background-color: #fff;
+    padding: 15px
+}
+
+.products-child-section {
+    background-image: url(http://cdn2.hubspot.net/hubfs/2259185/Who_We_Serve_Images/product-banner.png);
+    background-repeat: no-repeat;
+    width: 100%;
+    background-size: cover;
+    min-height: 400px!important
+}
+
+.products-child-banner-container {
+    padding: 145px 0
+}
+
+.pcp-menu-section ul li a {
+    padding: 12px 28px!important;
+    text-align: center;
+    vertical-align: middle;
+    color: #fff;
+    white-space: normal!important
+}
+
+.custom-menu-primary ul li:nth-child(3) ul li:nth-child(1) a:hover,
+.custom-menu-primary ul li:nth-child(4) ul li:nth-child(1) a:hover,
+.custom-menu-primary ul li:nth-child(5) ul li:nth-child(1) a:hover,
+.custom-menu-primary ul li:nth-child(6) ul li:nth-child(1) a:hover,
+.custom-menu-primary ul li:nth-child(7) ul li:nth-child(1) a:hover,
+.custom-menu-primary ul>li:nth-child(1)>ul>li:nth-child(1)>a:hover {
+    background: #fff!important;
+    color: #585a5a!important
+}
+
+.SecondaryMenu ul,
+.managed-service-parent-section {
+    min-height: 60px!important
+}
+
+.we-proudly-offers-logos {
+    margin-top: 5px;
+    margin-bottom: 85px
+}
+
+.wpocn-menu-list ul li a {
+    line-height: 24px
+}
+
+.wpocn-menu-list {
+    text-align: center;
+    padding: 15px 0
+}
+
+.wpocn-lists {
+    padding: 20px
+}
+
+.wpocn-gray {
+    background-color: #f1f1f1
+}
+
+.widget-type-cta img {
+    text-align: center;
+    width: 100%
+}
+
+.we-proudly-offers-cn-list {
+    padding: 0 0
+}
+
+.we-proudly-offers-logos h2 {
+    padding-bottom: 25px;
+    padding-top: 25px
+}
+
+.GFC-leasing-cp-cta {
+    width: auto!important
+}
+
+.gfc-lcp-menu-section {
+    background-color: #484c4d
+}
+
+.gfc-lcp-menu-section ul li a {
+    margin: 9px 9px!important;
+    padding: 15px 20px!important;
+    text-align: center;
+    vertical-align: middle;
+    color: #fff;
+    max-width: 100%!important;
+    white-space: normal!important
+}
+
+.products-software-parent-section {
+    background-image: url(http://cdn2.hubspot.net/hubfs/2259185/Gordon-Flesch-Site/Background-Images/87624571_2000x1500_80.jpg);
+    background-size: cover
+}
+
+.msp-subhead-section-2 {
+    text-align: center;
+    padding: 50px 0
+}
+
+.msp-subhead-section-2 img {
+    padding: 20px 0
+}
+
+.client-tools-section {
+    margin-bottom: 20px
+}
+
+.client-tools-section-grey {
+    background-color: #eee;
+    padding-bottom: 20px
+}
+
+.cts-heading {
+    padding: 20px 90px
+}
+
+.career-bp-sp ul {
+    list-style: none;
+    padding-left: 0
+}
+
+.career-bp-sp ul li {
+    float: left
+}
+
+.career-bp-sp-btn {
+    height: 130px;
+    width: 60%;
+    margin: 0 auto
+}
+
+.sp {
+    float: right
+}
+
+.education-service-category img {
+    margin: 0
+}
+
+@media (max-width:767px) {
+    .mspp-d1 h1 {
+        font-size: 36px
+    }
+    .pcp-menu-section ul li a {
+        line-height: 1.5
+    }
+    span.s5 img,
+    span.s6 img {
+        margin: 0 auto!important;
+        float: none!important;
+        display: block!important
+    }
+    .main-logo img {
+        width: 100%!important
+    }
+    .ppsrsc {
+        padding: 20px 0
+    }
+    .SecondaryMenu ul li {
+        width: 100%!important
+    }
+    .SecondaryMenu ul,
+    .managed-service-parent-section {
+        height: auto!important
+    }
+    .products-child-banner-container h1 {
+        font-size: 38px
+    }
+    .msp-subhead-text {
+        padding: 30px 15px
+    }
+    .ppshsc,
+    .ppssc {
+        min-height: auto!important
+    }
+    .solid_button_drkgrey a {
+        float: none;
+        margin-right: 0
+    }
+    .ppscbtn {
+        width: 100%;
+        float: left;
+        padding: 20px 0
+    }
+    .pps-hardware-cont {
+        padding: 0
+    }
+    .cts-heading {
+        padding: 20px 15px
+    }
+    .bordered {
+        border: 0!important
+    }
+    .managed-services-list-bg,
+    .managed-services-list-right-bg {
+        width: 100%!important
+    }
+    .managed-services-list-text {
+        width: 100%!important;
+        padding: 15px!important
+    }
+    .banner-container h1 {
+        font-size: 40px!important
+    }
+    .epc {
+        width: 100%!important;
+        margin-left: 0!important;
+        min-height: 170px!important
+    }
+    .pcp-menu-section ul li a {
+        padding: 10px 0!important
+    }
+}
+
+.managed-services-list-right-bg {
+    float: right!important
+}
+
+.solutions-right-text {
+    float: right!important
+}
+
+.search .input input {
+    margin-left: 0;
+    margin-right: 0;
+    width: 60%!important
+}
+
+@media only screen and (min-width:768px) and (max-width:1024px) and (orientation:landscape) {
+    .bread-menu .mobile-trigger {
+        display: none!important
+    }
+    .new-mobile-menu .child-trigger {
+        top: 0
+    }
+    .custom-menu-primary ul li:nth-child(1) ul li {
+        width: auto!important;
+        float: none!important
+    }
+    .child-open .hs-menu-wrapper.hs-menu-flow-horizontal.flyouts>ul li.hs-item-has-children ul.hs-menu-children-wrapper {
+        visibility: visible
+    }
+    .custom-menu-primary1 .hs-menu-wrapper>ul li a,
+    .hs-menu-wrapper.hs-menu-flow-horizontal>ul li.hs-item-has-children ul.hs-menu-children-wrapper li a {
+        padding: 5px 25px
+    }
+    .child-trigger {
+        top: -9px!important
+    }
+}
+
+@media only screen and (min-width:768px) and (max-width:1024px) and (orientation:portrait) {
+    .managed-services-list-text {
+        padding: 70px 40px!important
+    }
+    .cts-heading .career-bp-sp-btn {
+        height: 100%;
+        width: 100%;
+        text-align: center;
+        min-height: 120px
+    }
+    .child-trigger {
+        top: -9px!important
+    }
+}
+
+@media (min-width:1000px) {
+    .bread-menu .mobile-trigger {
+        display: none!important
+    }
+    .new-mobile-menu .child-trigger {
+        top: 0
+    }
+    .custom-menu-primary ul li:nth-child(1) ul li {
+        width: auto!important;
+        float: none!important
+    }
+    .child-open .hs-menu-wrapper.hs-menu-flow-horizontal.flyouts>ul li.hs-item-has-children ul.hs-menu-children-wrapper {
+        visibility: visible
+    }
+    .custom-menu-primary1 .hs-menu-wrapper>ul li a,
+    .hs-menu-wrapper.hs-menu-flow-horizontal>ul li.hs-item-has-children ul.hs-menu-children-wrapper li a {
+        padding: 5px 25px
+    }
+    .child-trigger {
+        top: -9px!important
+    }
+}
+
+@media (max-width:767px) {
+    .interactive-info {
+        max-width: 100%
+    }
+    .top-cta {
+        background: url(https://www.gflesch.com/hubfs/Backgrounds/Circuit-board-blue-background-800x300-25.jpg) no-repeat center center;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        background-color: #d15f16;
+        color: #fff;
+        border-top-style: solid;
+        border-top-width: 4px;
+        border-top-color: #fff;
+        border-bottom-style: solid;
+        border-bottom-width: 4px;
+        border-bottom-color: #fff;
+        padding: 0 0
+    }
+    .top-cta h2 {
+        color: #fff;
+        line-height: 36px;
+        text-align: center
+    }
+    .top-cta .solid_button_white_100 a {
+        margin: 20px 10px
+    }
+    .customer-logos {
+        padding: 0 15px 30px!important
+    }
+    .solid_button_blue a {
+        min-width: 162px
+    }
+    .solid_button_blue {
+        text-align: center
+    }
+    .free-download-cta a img {
+        padding-bottom: 20px
+    }
+    .free-download-cta:last-child a img {
+        padding-bottom: 0
+    }
+    .pps-resources-section {
+        padding: 20px 0
+    }
+    .pps-resources-section-contents .ppsrsc {
+        padding: 10px 0
+    }
+    .education-resource-c-3 .pps-resource-cont {
+        padding: 0 0
+    }
+    .pps-subhead-container-1 .ppscbtn {
+        text-align: center
+    }
+    .solid_button_drkgrey {
+        display: inline-block;
+        padding: 0 5px
+    }
+    .pps-software-section-catagarys {
+        margin-bottom: 10px!important
+    }
+    .pps-resource-cont {
+        padding: 10px 0
+    }
+    .border_button_blue a {
+        margin: 10px
+    }
+    .wpocn-lists-img {
+        text-align: center
+    }
+    .wpocn-menu-list ul {
+        padding-left: 0!important
+    }
+    .wpocn-menu-list ul li {
+        padding: 0
+    }
+    .wpocn-menu-list ul li a {
+        margin-bottom: 10px
+    }
+    .msp-subhead-section .msp-subhead-section-2 {
+        padding: 20px 0!important
+    }
+    .products-child-section-msp .msp-subhead-text {
+        padding: 0
+    }
+    .managed-services-list-bg,
+    .managed-services-list-right-bg {
+        width: 100%!important
+    }
+    .managed-services-list-right-bg {
+        float: none!important
+    }
+    .reso-img-cta #hs_cos_wrapper_module_147190268677554338 {
+        padding-bottom: 0!important
+    }
+    .cambridge-conn-text {
+        padding-bottom: 0!important
+    }
+    .solutions-text {
+        width: 100%!important;
+        min-height: 280px!important
+    }
+    .solutions-right-text {
+        width: 100%!important;
+        float: none!important;
+        min-height: 280px!important
+    }
+    .gfclist {
+        padding: 20px 0
+    }
+    .free-down-bg {
+        padding: 20px 0!important
+    }
+    .blog-listing-hhg-section {
+        padding: 40px 0!important
+    }
+    .blog-listing-hhg .border_button_drkgrey a {
+        margin-bottom: 15px;
+        margin-top: 0
+    }
+    .request-text {
+        border: 0!important
+    }
+    .padding60tb .widget-type-form h3 {
+        text-align: left
+    }
+    .padding60tb {
+        text-align: left
+    }
+    .padding60tb .widget-type-form .actions input {
+        margin-top: 0!important;
+        margin-bottom: 20px
+    }
+    .accentColor1 h2 {
+        padding-top: 20px
+    }
+    .pps-resources-section-contents .ppsrsc h3 img {
+        padding-bottom: 0
+    }
+    .we-proudly-offers-logos {
+        margin-bottom: 40px
+    }
+    .smart-solution-wrapper {
+        padding: 0!important
+    }
+    .smart-solution {
+        text-align: center
+    }
+    .smart-solution .border_button_blue {
+        text-align: center!important
+    }
+    .smart-heading {
+        padding: 20px 0
+    }
+    .padd-wrapper {
+        padding: 0!important
+    }
+    .home-page-1 .hs-rss-description a {
+        margin-left: auto;
+        margin-right: auto
+    }
+    .ap-giving-img {
+        padding-top: 20px
+    }
+    .ap-giving-img:first-child {
+        padding-top: 0
+    }
+    .padding40tb .main-content .span3 {
+        padding: 10px 0
+    }
+    .client-tools-content #hs_cos_wrapper_module_146977073497613576 {
+        margin-top: 0!important
+    }
+    .cts-heading .solid_button_drkgrey {
+        display: inline-block
+    }
+    .cts-heading .solid_button_drkgrey a {
+        min-width: auto
+    }
+    .cts-heading .career-bp-sp-btn {
+        height: 100%;
+        width: 100%;
+        text-align: center;
+        min-height: 120px
+    }
+    .ap-gfc-types-list {
+        margin-top: 0
+    }
+    .blog-section {
+        width: 100%!important
+    }
+    .myblog .blog-list-new .hs-featured-image-wrapper {
+        max-width: 100%!important
+    }
+    .myblog .post-header {
+        max-width: 100%!important
+    }
+    .myblog .post-body {
+        width: 100%!important
+    }
+    .contact-us-form .input input {
+        margin-left: 0;
+        margin-right: 0
+    }
+    .contact-us-form .hs_firstname .input {
+        padding-right: 10px
+    }
+    .contact-us-form .hs-form-field {
+        padding: 0!important
+    }
+    .contact-us-form .hs_submit .actions input {
+        margin-left: 0;
+        margin-right: 0
+    }
+    .banner-container {
+        min-height: auto!important;
+        padding: 110px 0!important
+    }
+    .banner-section-wraper {
+        min-height: 300px!important;
+        background-size: cover!important
+    }
+    .products-child-banner-container {
+        padding: 75px 0!important
+    }
+    .banner-container {
+        padding: 95px 0!important
+    }
+    .our-client .hs_cos_flex-viewport {
+        height: 100%
+    }
+    .our-client .hs_cos_flex-slider .cell-wrapper img {
+        width: 80%!important;
+        margin: 0 auto;
+        max-width: 100%!important
+    }
+    .we-proudly-offers-logos img {
+        width: 70%!important
+    }
+    .applications-wrapper {
+        text-align: center;
+        background-size: cover;
+        padding-bottom: 20px
+    }
+    .applications-solutions-wrapper {
+        text-align: center
+    }
+    .applications-solutions-wrapper img {
+        padding: 10px 0!important
+    }
+    .post-item {
+        width: 100%!important
+    }
+    .applications-solutions-wrapper #hs_cos_wrapper_module_147189452302929345 {
+        padding-left: 0!important
+    }
+    .applications-solutions-wrapper #hs_cos_wrapper_module_147189453146430926 {
+        padding-left: 0!important
+    }
+    .applications-solutions-wrapper #hs_cos_wrapper_module_147189967985211578 {
+        padding-left: 0!important
+    }
+    .applications-wrapper {
+        padding-bottom: 20px!important
+    }
+    .we-hr hr.style-grey {
+        margin: 20px 0
+    }
+    .equi-img img {
+        width: 300px!important
+    }
+    .contact-us-form .input select {
+        height: 40px;
+        width: 100%
+    }
+    .rec-img img {
+        padding: 0!important
+    }
+    .blog-banner {
+        padding: 70px 0!important
+    }
+    .post-blog-new .subscribe-right {
+        position: static!important
+    }
+    .related-post-hub .related-post-item {
+        width: 100%!important;
+        padding-bottom: 20px
+    }
+    .case-study-rss {
+        padding: 0 10px!important
+    }
+    .managed-service-parent-section {
+        position: relative
+    }
+    .bread-menu {
+        padding: 0!important;
+        margin: 0 0 30px 0!important;
+        position: absolute!important;
+        width: 100%!important;
+        top: -70px!important;
+        display: inline-block!important
+    }
+    .pcp-menu-section .row-fluid-wrapper:last-child .hs-menu-wrapper.hs-menu-flow-horizontal>ul {
+        margin-bottom: 0;
+        position: absolute;
+        z-index: 9999;
+        background-color: #fff
+    }
+    .msp-subhead-section .msp-subhead-section-2 {
+        padding: 60px 0 0!important
+    }
+}
+
+@media (max-width:479px) {
+    .mps-cta-section {
+        color: #fff;
+        background-color: #000;
+        background-attachment: fixed;
+        background-position: right;
+        background-image: url(https://www.gflesch.com/hubfs/Gordon-Flesch-Site/MPS-Pillar/MPS-pillar-header2.png);
+        background-repeat: no-repeat;
+        width: 100%;
+        background-size: cover;
+        padding: 0;
+        margin: 0
+    }
+    .slide-left {
+        max-width: 60%
+    }
+    .featured-CTA {
+        display: none!important
+    }
+    .social-sharing-white-icons {
+        text-align: center!important;
+        padding: 0!important
+    }
+    .top-cta h2 {
+        color: #fff;
+        line-height: 30px;
+        text-align: center
+    }
+    .solid_button_blue a {
+        min-width: 100%
+    }
+    .pps-resources-section-contents .ppsrsc {
+        padding: 0
+    }
+    .pps-resources-section-contents .ppsrsc img {
+        padding-bottom: 15px
+    }
+    .pps-resources-section-contents .ppsrsc:last-child img {
+        padding-bottom: 0
+    }
+    .pps-subhead-container-1 .ppscbtn {
+        padding-top: 0
+    }
+    .pps-resources-section-contents .pps-resource-cont {
+        padding: 0 0 10px!important
+    }
+    .solutions-text {
+        min-height: 155px!important
+    }
+    .solutions-right-text {
+        min-height: 155px!important
+    }
+    .gfclist .solid_button_blue a {
+        margin: 0
+    }
+    .we-proudly-offers-logos {
+        margin-bottom: 20px
+    }
+    .padding40tb .main-content .span3 {
+        padding: 0 0 5px
+    }
+    .cts-heading .solid_button_drkgrey {
+        display: block;
+        padding: 0
+    }
+    .cts-heading h2 {
+        padding-top: 20px
+    }
+    .myblog .post-item {
+        width: 100%!important
+    }
+    .post-body .border_button_orange {
+        display: block!important;
+        float: none!important;
+        text-align: center
+    }
+    .social-media-ics {
+        text-align: center;
+        float: none!important;
+        margin-right: 0!important
+    }
+    .contact-us-form .hs_firstname .input {
+        padding-right: 0
+    }
+    .main-content h3 {
+        text-align: left
+    }
+    .banner-container {
+        padding: 55px 0!important
+    }
+    .banner-container h1 {
+        margin: 0 10px
+    }
+    .banner-container p {
+        margin: 0 10px
+    }
+    .banner-container .solid_button_orange {
+        margin: 0 10px
+    }
+    .banner-img {
+        background-attachment: initial!important;
+        background-position: top;
+        position: relative
+    }
+    .products-child-banner-container {
+        padding: 35px 0!important
+    }
+    .our-client ul li.hs_cos_flex-slide-main {
+        height: 500px!important
+    }
+    .managed-services-list-bg,
+    .managed-services-list-right-bg {
+        min-height: 200px!important
+    }
+    .we-proudly-offers-logos img {
+        width: 100%!important
+    }
+    .hs-author-avatar {
+        width: 100%!important;
+        float: none!important;
+        text-align: center;
+        margin-left: 0!important
+    }
+    .blog-actr p {
+        text-align: center
+    }
+    .post-header h2 {
+        text-align: center;
+        font-size: 30px!important
+    }
+    .applications-solutions-wrapper img {
+        width: 100%!important
+    }
+    .blog-banner {
+        padding: 20px 0!important
+    }
+    .post-blog-new .hubspot-editable-new {
+        text-align: center
+    }
+}

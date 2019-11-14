@@ -1,0 +1,94 @@
+.filter-outer {
+    text-align: center;
+    padding: 30px 0;
+    min-height: 150px;
+}
+
+.filter-dropdown select {
+    width: 90%;
+    float: none;
+    height: 48px;
+    border: 1px solid #CCC;
+    border-radius: 4px;
+    font-size: 16px;
+    color: #000;
+    margin: 20px auto 0 auto;
+}
+
+.filter-col-outer{   
+    background-color: #a6aaa9;
+    padding: 40px;
+}
+
+.outer-resource.show-block {
+    display: block !important;
+}
+
+.outer-resource {
+    display: none !important;
+    width: 30% !important;
+    text-align: center;
+    border: 2px solid #000;
+    padding: 35px 15px;
+    min-height: 350px;
+    display: inline-block;
+    float: left;
+    margin: 22px 18px 20px 18px;
+    background-color: #fff;
+}
+
+.background-color-f0f0f0 {
+  background-color: #f0f0f0;
+}
+
+.padding-top-bottom-25px {
+  padding: 25px 0;
+}
+
+.content-card-text h4 {
+    height: 52px;
+}
+
+.content-card-text p {
+    height: 96px;
+}
+
+.listing-cell {
+    margin-bottom: 25px;
+}
+
+.scroll-to-top {
+  display: none;
+}
+
+
+/************** ipad ***************/
+@media (max-width: 1080px) {
+    .outer-resource {
+        width: 29% !important;
+    }
+}
+
+/************** ipad nd tab ***************/
+@media only screen and (min-width:768px) and (max-width: 1024px) and (orientation : portrait){
+    .outer-resource {
+        width: 44% !important;
+    }
+
+}
+
+/************** iphone roatate***************/
+@media (max-width: 767px) {
+        
+    .outer-resource {
+        width: 100% !important;
+        margin: 22px 0px 20px 0px;
+    }
+    
+    .filter-col-outer {
+        padding: 20px;
+    }
+}
+
+/************** iphone ***************/
+@media (max-width: 479px) {}
