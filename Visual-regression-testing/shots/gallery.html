@@ -1,0 +1,4382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.cycle/3.03/jquery.cycle.all.min.js"></script>
+  <style type="text/css">
+    body {
+      position: relative;
+      float: left;
+      width: 100%;
+    }
+    .slideshow {
+      height: 510px;
+      margin: 20px 0;
+    }
+    .slide {
+      background-color: #FFF !important;
+      width: 100% !important;
+      height: 510px !important;
+    }
+    .prev {
+      margin-left: -10px;
+      margin-right: 10px;
+    }
+    .next,
+    .prev {
+      cursor: pointer;
+      background-color: #e7e7e7;
+      border: 2px solid #eee;
+      height: 400px;
+      margin-top: 60px;
+    }
+
+    .prev span:before,
+    .next span:before {
+      font-size: 35px;
+      padding: 10px;
+      display: block;
+      font-family: "FontAwesome";
+      margin-top: 165px;
+      display: block;
+    }
+
+    .prev span:before {
+      content:"\f0d9";
+    }
+    .next span:before {
+      content:"\f0da";
+    }
+    .list-group-item.checked a:after {
+      color: #23e343;
+    }
+    .list-group-item a span {
+      word-wrap: break-word;
+      width: 95%;
+      display: block;
+    }
+    .list-group-item a:after {
+      content:"\f00c";
+      font-family: "FontAwesome";
+      color: #eae6e6;
+      position: absolute;
+      right: 10px;
+      top: 10px;
+    }
+    .checked a {
+      color: #000;
+    }
+    .current {
+      background-color: #e7e7e7;
+    }
+    .threshold {
+      color: red;
+    }
+    .compare {
+      cursor: pointer;
+      margin-left: 20px;
+    }
+
+    .compare:before {
+      font-family: "FontAwesome";
+      content:"\f0c5";
+      font-size: 30px;
+    }
+    .compare-modal {
+      position:fixed;
+      margin:0;
+      top:0;
+      left:0;
+      width: 100%;
+      height: 100%;
+      background:rgba(0,0,0,0.7);
+      overflow: scroll;
+      z-index: 1000;
+    }
+    .compare-container {
+      padding-bottom: 300px;
+      z-index: 1000;
+      margin-top: 20px;
+      text-align: center;
+    }
+    .compare-container img{
+      margin-right: 20px;
+      max-width: 30%;
+    }
+  </style>
+  <script type="text/javascript">
+    $(function() {
+      var slideshow = $('.slideshow');
+      var compareModal = $('.compare-modal');
+
+      slideshow.cycle({
+        fx:     'scrollHorz',
+        speed:  300,
+        prev:   '.prev',
+        next:   '.next',
+        before: function (curr, next, opts) {
+          $('.current').removeClass('current');
+          var $next = $(next);
+          var path = $next.find('.path').attr('name');
+          $.each($('.list-group .list-group-item a'), function() {
+            if ($(this).attr('href').substring(1) == path) {
+              $(this).parent().addClass('checked');
+              $(this).parent().addClass('current');
+            }
+          });
+
+          var newImage = $next.find('a.shot:eq(0)').attr('href');
+          var oldImage = $next.find('a.shot:eq(1)').attr('href');
+          var diffImage = $next.find('a.shot:eq(2)').attr('href');
+          compareModal.html('<div class="compare-container"><img src="'+newImage+'"/><img src="'+oldImage+'"/><img src="'+diffImage+'"/></div>');
+        },
+        timeout: 0
+      });
+
+      $(document).on('click', '.compare', function() {
+        compareModal.show();
+      });
+
+      $('.list-group .list-group-item a').unbind().on('click', function(){
+        var href = $(this).attr('href').substring(1);
+
+        slideshow.cycle($('.slide.'+href+':first').index());
+      })
+
+      $('.shot').unbind().on('click', function(e){
+        e.preventDefault();
+        var url = $(this).attr('href');
+        window.open(url,'_blank');
+      })
+
+      compareModal.on('click', function(){
+        $(this).hide();
+      });
+
+      $(document).on('keyup', function(e) {
+        if (e.keyCode === 27) { // Escape
+          compareModal.hide();
+        } else if (e.keyCode === 37) { // Left
+          slideshow.cycle('prev');
+        } else if (e.keyCode === 39) { // Right
+          slideshow.cycle('next');
+        }
+      });
+    })
+</script>
+</head>
+<body>
+  <div class="compare-modal" style="display: none;"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-md-3">
+        <div class="panel">
+          <div class="page-header">
+            <h4>List of screenshots for shots <small>taken 2019/11/15 13:59:03</small></h4>
+          </div>
+          <div class="panel-heading">Pages:</div>
+          <ul class="list-group list-group-flush">
+            
+            <li class="list-group-item"><a href="#business-technology-vidoes"><span>/business-technology-vidoes</span></a></li>
+            
+            <li class="list-group-item"><a href="#askgordy-ai-application-for-ecm-systems"><span>/askgordy-ai-application-for-ecm-systems</span></a></li>
+            
+            <li class="list-group-item"><a href="#enterprise-content-management"><span>/enterprise-content-management</span></a></li>
+            
+            <li class="list-group-item"><a href="#careers"><span>/careers</span></a></li>
+            
+            <li class="list-group-item"><a href="#contact-milwaukee"><span>/contact-milwaukee</span></a></li>
+            
+            <li class="list-group-item"><a href="#guide-to-managed-print-services"><span>/guide-to-managed-print-services</span></a></li>
+            
+            <li class="list-group-item"><a href="#giving-back"><span>/giving-back</span></a></li>
+            
+            <li class="list-group-item"><a href="#gfc-blog-subscription"><span>/gfc-blog-subscription</span></a></li>
+            
+            <li class="list-group-item"><a href="#news-post"><span>/news-post</span></a></li>
+            
+            <li class="list-group-item"><a href="#interactive-displays"><span>/interactive-displays</span></a></li>
+            
+            <li class="list-group-item"><a href="#contact-columbus"><span>/contact-columbus</span></a></li>
+            
+            <li class="list-group-item"><a href="#who-we-serve"><span>/who-we-serve</span></a></li>
+            
+            <li class="list-group-item"><a href="#products"><span>/products</span></a></li>
+            
+            <li class="list-group-item"><a href="#blog-topic"><span>/blog-topic</span></a></li>
+            
+            <li class="list-group-item"><a href="#go-green-with-managed-print"><span>/go-green-with-managed-print</span></a></li>
+            
+            <li class="list-group-item"><a href="#contact-fox-valley"><span>/contact-fox-valley</span></a></li>
+            
+            <li class="list-group-item"><a href="#askgordy-pricing-ai-application"><span>/askgordy-pricing-ai-application</span></a></li>
+            
+            <li class="list-group-item"><a href="#enterprise"><span>/enterprise</span></a></li>
+            
+            <li class="list-group-item"><a href="#cybersecurity-for-your-printer"><span>/cybersecurity-for-your-printer</span></a></li>
+            
+            <li class="list-group-item"><a href="#blog-post"><span>/blog-post</span></a></li>
+            
+            <li class="list-group-item"><a href="#askgordy-resources-ai-application-for-ecm-systems"><span>/askgordy-resources-ai-application-for-ecm-systems</span></a></li>
+            
+            <li class="list-group-item"><a href="#technical-support"><span>/technical-support</span></a></li>
+            
+            <li class="list-group-item"><a href="#onsite-services"><span>/onsite-services</span></a></li>
+            
+            <li class="list-group-item"><a href="#direct-phone-numbers"><span>/direct-phone-numbers</span></a></li>
+            
+            <li class="list-group-item"><a href="#managed-it-services"><span>/managed-it-services</span></a></li>
+            
+            <li class="list-group-item"><a href="#integrated-solutions"><span>/integrated-solutions</span></a></li>
+            
+            <li class="list-group-item"><a href="#lexmark-mfp-printer-products"><span>/lexmark-mfp-printer-products</span></a></li>
+            
+            <li class="list-group-item"><a href="#education"><span>/education</span></a></li>
+            
+            <li class="list-group-item"><a href="#customer-reviews"><span>/customer-reviews</span></a></li>
+            
+            <li class="list-group-item"><a href="#printer-leasing"><span>/printer-leasing</span></a></li>
+            
+            <li class="list-group-item"><a href="#managed-print-case-study"><span>/managed-print-case-study</span></a></li>
+            
+            <li class="list-group-item"><a href="#manufacturing"><span>/manufacturing</span></a></li>
+            
+            <li class="list-group-item"><a href="#cedar-falls-contact"><span>/cedar-falls-contact</span></a></li>
+            
+            <li class="list-group-item"><a href="#blog"><span>/blog</span></a></li>
+            
+            <li class="list-group-item"><a href="#gfc-news"><span>/gfc-news</span></a></li>
+            
+            <li class="list-group-item"><a href="#faqs"><span>/faqs</span></a></li>
+            
+            <li class="list-group-item"><a href="#business-technology-resources"><span>/business-technology-resources</span></a></li>
+            
+            <li class="list-group-item"><a href="#gfconsulting-group"><span>/gfconsulting-group</span></a></li>
+            
+            <li class="list-group-item"><a href="#printers"><span>/printers</span></a></li>
+            
+            <li class="list-group-item"><a href="#ibm-cognos-analytics"><span>/ibm-cognos-analytics</span></a></li>
+            
+            <li class="list-group-item"><a href="#virtual-cio-services"><span>/virtual-cio-services</span></a></li>
+            
+            <li class="list-group-item"><a href="#ibm-watson-assistant"><span>/ibm-watson-assistant</span></a></li>
+            
+            <li class="list-group-item"><a href="#appleton-area-school-district"><span>/appleton-area-school-district</span></a></li>
+            
+            <li class="list-group-item"><a href="#the-beginners-guide-to-managed-print-services"><span>/the-beginners-guide-to-managed-print-services</span></a></li>
+            
+            <li class="list-group-item"><a href="#ricoh-products"><span>/ricoh-products</span></a></li>
+            
+            <li class="list-group-item"><a href="#traditional-it-department-vs-managed-it-comparison-chart"><span>/traditional-it-department-vs-managed-it-comparison-chart</span></a></li>
+            
+            <li class="list-group-item"><a href="#terms-and-conditions"><span>/terms-and-conditions</span></a></li>
+            
+            <li class="list-group-item"><a href="#security-policy"><span>/security-policy</span></a></li>
+            
+            <li class="list-group-item"><a href="#contact-indy"><span>/contact-indy</span></a></li>
+            
+            <li class="list-group-item"><a href="#gfc-news-topic"><span>/gfc-news-topic</span></a></li>
+            
+            <li class="list-group-item"><a href="#order-supplies"><span>/order-supplies</span></a></li>
+            
+            <li class="list-group-item"><a href="#production-printers"><span>/production-printers</span></a></li>
+            
+            <li class="list-group-item"><a href="#contact-us"><span>/contact-us</span></a></li>
+            
+            <li class="list-group-item"><a href="#custom-workflow-integrations"><span>/custom-workflow-integrations</span></a></li>
+            
+            <li class="list-group-item"><a href="#askgordy-features-ai-application-for-ecm-systems"><span>/askgordy-features-ai-application-for-ecm-systems</span></a></li>
+            
+            <li class="list-group-item"><a href="#scanners"><span>/scanners</span></a></li>
+            
+            <li class="list-group-item"><a href="#office-copiers"><span>/office-copiers</span></a></li>
+            
+            <li class="list-group-item"><a href="#gfc-news-subscription"><span>/gfc-news-subscription</span></a></li>
+            
+            <li class="list-group-item"><a href="#our-team"><span>/our-team</span></a></li>
+            
+            <li class="list-group-item"><a href="#finance"><span>/finance</span></a></li>
+            
+            <li class="list-group-item"><a href="#customer-financing-solutions"><span>/customer-financing-solutions</span></a></li>
+            
+            <li class="list-group-item"><a href="#hybrid-cloud-services"><span>/hybrid-cloud-services</span></a></li>
+            
+            <li class="list-group-item"><a href="#proactive-cybersecurity-services"><span>/proactive-cybersecurity-services</span></a></li>
+            
+            <li class="list-group-item"><a href="#the-gfc-difference"><span>/the-gfc-difference</span></a></li>
+            
+            <li class="list-group-item"><a href="#managed-services"><span>/managed-services</span></a></li>
+            
+            <li class="list-group-item"><a href="#production-print"><span>/production-print</span></a></li>
+            
+            <li class="list-group-item"><a href="#recycle-services"><span>/recycle-services</span></a></li>
+            
+            <li class="list-group-item"><a href="#client-tools"><span>/client-tools</span></a></li>
+            
+            <li class="list-group-item"><a href="#non-profits"><span>/non-profits</span></a></li>
+            
+            <li class="list-group-item"><a href="#managed-print-services"><span>/managed-print-services</span></a></li>
+            
+            <li class="list-group-item"><a href="#legal"><span>/legal</span></a></li>
+            
+            <li class="list-group-item"><a href="#ai-solutions"><span>/ai-solutions</span></a></li>
+            
+            <li class="list-group-item"><a href="#canon-products"><span>/canon-products</span></a></li>
+            
+            <li class="list-group-item"><a href="#our-history"><span>/our-history</span></a></li>
+            
+            <li class="list-group-item"><a href="#contact-us-geneva"><span>/contact-us-geneva</span></a></li>
+            
+            <li class="list-group-item"><a href="#insurance"><span>/insurance</span></a></li>
+            
+            <li class="list-group-item"><a href="#equipment"><span>/equipment</span></a></li>
+            
+            <li class="list-group-item"><a href="#the-quick-guide-to-print-security"><span>/the-quick-guide-to-print-security</span></a></li>
+            
+            <li class="list-group-item"><a href="#health-care"><span>/health-care</span></a></li>
+            
+            <li class="list-group-item"><a href="#small-medium-businesses"><span>/small-medium-businesses</span></a></li>
+            
+            <li class="list-group-item"><a href="#business-technology-events"><span>/business-technology-events</span></a></li>
+            
+            <li class="list-group-item"><a href="#applications-and-services"><span>/applications-and-services</span></a></li>
+            
+            <li class="list-group-item"><a href="#large-format-printers"><span>/large-format-printers</span></a></li>
+            
+            <li class="list-group-item"><a href="#pay-online"><span>/pay-online</span></a></li>
+            
+            <li class="list-group-item"><a href="#the-ultimate-guide-to-managed-it"><span>/the-ultimate-guide-to-managed-it</span></a></li>
+            
+            <li class="list-group-item"><a href="#guide-to-cybersecurity-for-business"><span>/guide-to-cybersecurity-for-business</span></a></li>
+            
+            <li class="list-group-item"><a href="#home"><span>/home</span></a></li>
+            
+            <li class="list-group-item"><a href="#it-hardware-as-a-service"><span>/it-hardware-as-a-service</span></a></li>
+            
+            <li class="list-group-item"><a href="#vendor-financing-solutions"><span>/vendor-financing-solutions</span></a></li>
+            
+            <li class="list-group-item"><a href="#gfc-case-studies"><span>/gfc-case-studies</span></a></li>
+            
+            <li class="list-group-item"><a href="#contact"><span>/contact</span></a></li>
+            
+            <li class="list-group-item"><a href="#device-drivers-and-utilities"><span>/device-drivers-and-utilities</span></a></li>
+            
+            <li class="list-group-item"><a href="#blog-author"><span>/blog-author</span></a></li>
+            
+          </ul>
+        </div>
+      </div>
+      <div class="col-sm-12 col-md-9">
+        <div class="slideshow-container">
+          <div class="prev col-sm-1"><span></span></div>
+          <div class="slideshow pull-left col-sm-10">
+            
+            
+            <div class="row slide business-technology-vidoes">
+              <a class="path" name="business-technology-vidoes"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>0px - /business-technology-vidoes</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="business-technology-vidoes/MULTI_casperjs_original_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/business-technology-vidoes/MULTI_casperjs_original_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="business-technology-vidoes/MULTI_casperjs_original.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/business-technology-vidoes/MULTI_casperjs_original.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://www.gflesch.com/videos">original</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="business-technology-vidoes/MULTI_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/business-technology-vidoes/MULTI_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center threshold">51.35 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            
+            
+            <div class="row slide askgordy-ai-application-for-ecm-systems">
+              <a class="path" name="askgordy-ai-application-for-ecm-systems"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>0px - /askgordy-ai-application-for-ecm-systems</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="askgordy-ai-application-for-ecm-systems/MULTI_casperjs_original_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/askgordy-ai-application-for-ecm-systems/MULTI_casperjs_original_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="askgordy-ai-application-for-ecm-systems/MULTI_casperjs_original.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/askgordy-ai-application-for-ecm-systems/MULTI_casperjs_original.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://www.gflesch.com/ai-solutions/askgordy">original</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="askgordy-ai-application-for-ecm-systems/MULTI_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/askgordy-ai-application-for-ecm-systems/MULTI_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center threshold">12.67 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            
+            
+            <div class="row slide enterprise-content-management">
+              <a class="path" name="enterprise-content-management"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>0px - /enterprise-content-management</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="enterprise-content-management/MULTI_casperjs_original_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/enterprise-content-management/MULTI_casperjs_original_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="enterprise-content-management/MULTI_casperjs_original.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/enterprise-content-management/MULTI_casperjs_original.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://www.gflesch.com/software/enterprise-content-management">original</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="enterprise-content-management/MULTI_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/enterprise-content-management/MULTI_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center threshold">5.59 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            
+            
+            <div class="row slide careers">
+              <a class="path" name="careers"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>0px - /careers</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="careers/MULTI_casperjs_original_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/careers/MULTI_casperjs_original_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="careers/MULTI_casperjs_original.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/careers/MULTI_casperjs_original.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://www.gflesch.com/careers">original</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="careers/MULTI_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/careers/MULTI_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">2.1 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            
+            
+            <div class="row slide contact-milwaukee">
+              <a class="path" name="contact-milwaukee"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>0px - /contact-milwaukee</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="contact-milwaukee/MULTI_casperjs_original_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/contact-milwaukee/MULTI_casperjs_original_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="contact-milwaukee/MULTI_casperjs_original.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/contact-milwaukee/MULTI_casperjs_original.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://www.gflesch.com/contact-us/milwaukee">original</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="contact-milwaukee/MULTI_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/contact-milwaukee/MULTI_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">0.35 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            
+            
+            <div class="row slide guide-to-managed-print-services">
+              <a class="path" name="guide-to-managed-print-services"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>0px - /guide-to-managed-print-services</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="guide-to-managed-print-services/MULTI_casperjs_original_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/guide-to-managed-print-services/MULTI_casperjs_original_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="guide-to-managed-print-services/MULTI_casperjs_original.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/guide-to-managed-print-services/MULTI_casperjs_original.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://www.gflesch.com/managed-print-services-guide">original</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="guide-to-managed-print-services/MULTI_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/guide-to-managed-print-services/MULTI_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">0.01 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            
+            
+            <div class="row slide giving-back">
+              <a class="path" name="giving-back"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>0px - /giving-back</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="giving-back/MULTI_casperjs_original_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/giving-back/MULTI_casperjs_original_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="giving-back/MULTI_casperjs_original.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/giving-back/MULTI_casperjs_original.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://www.gflesch.com/the-gfc-difference/giving-back">original</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="giving-back/MULTI_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/giving-back/MULTI_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">0.0 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            
+            
+            <div class="row slide gfc-blog-subscription">
+              <a class="path" name="gfc-blog-subscription"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>0px - /gfc-blog-subscription</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="gfc-blog-subscription/MULTI_casperjs_original_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/gfc-blog-subscription/MULTI_casperjs_original_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="gfc-blog-subscription/MULTI_casperjs_original.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/gfc-blog-subscription/MULTI_casperjs_original.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://www.gflesch.com/blog-subscription">original</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="gfc-blog-subscription/MULTI_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/gfc-blog-subscription/MULTI_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">0.0 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            
+            
+            <div class="row slide news-post">
+              <a class="path" name="news-post"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>0px - /news-post</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="news-post/MULTI_casperjs_original_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/news-post/MULTI_casperjs_original_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="news-post/MULTI_casperjs_original.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/news-post/MULTI_casperjs_original.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://www.gflesch.com/news/gfc-acquires-advanced-systems">original</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="news-post/MULTI_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/news-post/MULTI_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">0.0 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            
+            
+            <div class="row slide interactive-displays">
+              <a class="path" name="interactive-displays"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>0px - /interactive-displays</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="interactive-displays/MULTI_casperjs_original_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/interactive-displays/MULTI_casperjs_original_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="interactive-displays/MULTI_casperjs_original.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/interactive-displays/MULTI_casperjs_original.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://www.gflesch.com/hardware/other">original</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="interactive-displays/MULTI_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/interactive-displays/MULTI_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">0.0 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            
+            
+            <div class="row slide contact-columbus">
+              <a class="path" name="contact-columbus"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>0px - /contact-columbus</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="contact-columbus/MULTI_casperjs_original_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/contact-columbus/MULTI_casperjs_original_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="contact-columbus/MULTI_casperjs_original.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/contact-columbus/MULTI_casperjs_original.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://www.gflesch.com/contact-us/columbus">original</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="contact-columbus/MULTI_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/contact-columbus/MULTI_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">0.0 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            
+            
+            <div class="row slide who-we-serve">
+              <a class="path" name="who-we-serve"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>0px - /who-we-serve</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="who-we-serve/MULTI_casperjs_original_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/who-we-serve/MULTI_casperjs_original_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="who-we-serve/MULTI_casperjs_original.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/who-we-serve/MULTI_casperjs_original.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://www.gflesch.com/who-we-serve">original</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="who-we-serve/MULTI_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/who-we-serve/MULTI_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">0.0 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            
+            
+            <div class="row slide products">
+              <a class="path" name="products"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>0px - /products</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="products/MULTI_casperjs_original_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/products/MULTI_casperjs_original_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="products/MULTI_casperjs_original.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/products/MULTI_casperjs_original.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://www.gflesch.com/products">original</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="products/MULTI_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/products/MULTI_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">0.0 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            
+            
+            <div class="row slide blog-topic">
+              <a class="path" name="blog-topic"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>0px - /blog-topic</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="blog-topic/MULTI_casperjs_original_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/blog-topic/MULTI_casperjs_original_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="blog-topic/MULTI_casperjs_original.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/blog-topic/MULTI_casperjs_original.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://www.gflesch.com/blog/topic/financing">original</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="blog-topic/MULTI_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/blog-topic/MULTI_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">0.0 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            
+            
+            <div class="row slide go-green-with-managed-print">
+              <a class="path" name="go-green-with-managed-print"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>0px - /go-green-with-managed-print</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="go-green-with-managed-print/MULTI_casperjs_original_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/go-green-with-managed-print/MULTI_casperjs_original_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="go-green-with-managed-print/MULTI_casperjs_original.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/go-green-with-managed-print/MULTI_casperjs_original.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://www.gflesch.com/go-green-with-managed-print-lp">original</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="go-green-with-managed-print/MULTI_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/go-green-with-managed-print/MULTI_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">0.0 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            
+            
+            <div class="row slide contact-fox-valley">
+              <a class="path" name="contact-fox-valley"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>0px - /contact-fox-valley</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="contact-fox-valley/MULTI_casperjs_original_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/contact-fox-valley/MULTI_casperjs_original_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="contact-fox-valley/MULTI_casperjs_original.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/contact-fox-valley/MULTI_casperjs_original.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://www.gflesch.com/contact-us/fox-valley">original</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="contact-fox-valley/MULTI_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/contact-fox-valley/MULTI_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">0.0 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            
+            
+            <div class="row slide askgordy-pricing-ai-application">
+              <a class="path" name="askgordy-pricing-ai-application"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>0px - /askgordy-pricing-ai-application</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="askgordy-pricing-ai-application/MULTI_casperjs_original_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/askgordy-pricing-ai-application/MULTI_casperjs_original_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="askgordy-pricing-ai-application/MULTI_casperjs_original.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/askgordy-pricing-ai-application/MULTI_casperjs_original.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://www.gflesch.com/ai-solutions/askgordy-pricing">original</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="askgordy-pricing-ai-application/MULTI_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/askgordy-pricing-ai-application/MULTI_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">0.0 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            
+            
+            <div class="row slide enterprise">
+              <a class="path" name="enterprise"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>0px - /enterprise</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="enterprise/MULTI_casperjs_original_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/enterprise/MULTI_casperjs_original_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="enterprise/MULTI_casperjs_original.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/enterprise/MULTI_casperjs_original.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://www.gflesch.com/who-we-serve/enterprise">original</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="enterprise/MULTI_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/enterprise/MULTI_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">0.0 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            
+            
+            <div class="row slide cybersecurity-for-your-printer">
+              <a class="path" name="cybersecurity-for-your-printer"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>0px - /cybersecurity-for-your-printer</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="cybersecurity-for-your-printer/MULTI_casperjs_original_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/cybersecurity-for-your-printer/MULTI_casperjs_original_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="cybersecurity-for-your-printer/MULTI_casperjs_original.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/cybersecurity-for-your-printer/MULTI_casperjs_original.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://www.gflesch.com/cybersecurity-for-your-printer-lp">original</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="cybersecurity-for-your-printer/MULTI_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/cybersecurity-for-your-printer/MULTI_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">0.0 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            
+            
+            <div class="row slide blog-post">
+              <a class="path" name="blog-post"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>0px - /blog-post</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="blog-post/MULTI_casperjs_original_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/blog-post/MULTI_casperjs_original_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="blog-post/MULTI_casperjs_original.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/blog-post/MULTI_casperjs_original.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://www.gflesch.com/blog/5-top-mps-questions">original</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="blog-post/MULTI_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/blog-post/MULTI_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">0.0 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            
+            
+            <div class="row slide askgordy-resources-ai-application-for-ecm-systems">
+              <a class="path" name="askgordy-resources-ai-application-for-ecm-systems"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>0px - /askgordy-resources-ai-application-for-ecm-systems</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="askgordy-resources-ai-application-for-ecm-systems/MULTI_casperjs_original_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/askgordy-resources-ai-application-for-ecm-systems/MULTI_casperjs_original_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="askgordy-resources-ai-application-for-ecm-systems/MULTI_casperjs_original.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/askgordy-resources-ai-application-for-ecm-systems/MULTI_casperjs_original.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://www.gflesch.com/ai-solutions/askgordy-resources">original</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="askgordy-resources-ai-application-for-ecm-systems/MULTI_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/askgordy-resources-ai-application-for-ecm-systems/MULTI_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">0.0 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            
+            
+            <div class="row slide technical-support">
+              <a class="path" name="technical-support"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>0px - /technical-support</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="technical-support/MULTI_casperjs_original_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/technical-support/MULTI_casperjs_original_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="technical-support/MULTI_casperjs_original.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/technical-support/MULTI_casperjs_original.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://www.gflesch.com/client-tools/technical-support">original</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="technical-support/MULTI_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/technical-support/MULTI_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">0.0 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            
+            
+            <div class="row slide onsite-services">
+              <a class="path" name="onsite-services"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>0px - /onsite-services</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="onsite-services/MULTI_casperjs_original_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/onsite-services/MULTI_casperjs_original_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="onsite-services/MULTI_casperjs_original.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/onsite-services/MULTI_casperjs_original.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://www.gflesch.com/onsite-services">original</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="onsite-services/MULTI_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/onsite-services/MULTI_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">0.0 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            
+            
+            <div class="row slide direct-phone-numbers">
+              <a class="path" name="direct-phone-numbers"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>0px - /direct-phone-numbers</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="direct-phone-numbers/MULTI_casperjs_original_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/direct-phone-numbers/MULTI_casperjs_original_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="direct-phone-numbers/MULTI_casperjs_original.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/direct-phone-numbers/MULTI_casperjs_original.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://www.gflesch.com/direct-phone-numbers">original</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="direct-phone-numbers/MULTI_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/direct-phone-numbers/MULTI_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">0.0 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            
+            
+            <div class="row slide managed-it-services">
+              <a class="path" name="managed-it-services"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>0px - /managed-it-services</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="managed-it-services/MULTI_casperjs_original_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/managed-it-services/MULTI_casperjs_original_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="managed-it-services/MULTI_casperjs_original.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/managed-it-services/MULTI_casperjs_original.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://www.gflesch.com/managed-it-services">original</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="managed-it-services/MULTI_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/managed-it-services/MULTI_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">0.0 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            
+            
+            <div class="row slide integrated-solutions">
+              <a class="path" name="integrated-solutions"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>0px - /integrated-solutions</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="integrated-solutions/MULTI_casperjs_original_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/integrated-solutions/MULTI_casperjs_original_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="integrated-solutions/MULTI_casperjs_original.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/integrated-solutions/MULTI_casperjs_original.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://www.gflesch.com/software/integrated-solutions">original</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="integrated-solutions/MULTI_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/integrated-solutions/MULTI_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">0.0 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            
+            
+            <div class="row slide lexmark-mfp-printer-products">
+              <a class="path" name="lexmark-mfp-printer-products"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>0px - /lexmark-mfp-printer-products</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="lexmark-mfp-printer-products/MULTI_casperjs_original_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/lexmark-mfp-printer-products/MULTI_casperjs_original_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="lexmark-mfp-printer-products/MULTI_casperjs_original.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/lexmark-mfp-printer-products/MULTI_casperjs_original.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://www.gflesch.com/lexmark-products-information">original</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="lexmark-mfp-printer-products/MULTI_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/lexmark-mfp-printer-products/MULTI_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">0.0 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            
+            
+            <div class="row slide education">
+              <a class="path" name="education"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>0px - /education</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="education/MULTI_casperjs_original_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/education/MULTI_casperjs_original_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="education/MULTI_casperjs_original.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/education/MULTI_casperjs_original.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://www.gflesch.com/who-we-serve/education">original</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="education/MULTI_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/education/MULTI_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">0.0 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            
+            
+            <div class="row slide customer-reviews">
+              <a class="path" name="customer-reviews"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>0px - /customer-reviews</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="customer-reviews/MULTI_casperjs_original_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/customer-reviews/MULTI_casperjs_original_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="customer-reviews/MULTI_casperjs_original.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/customer-reviews/MULTI_casperjs_original.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://www.gflesch.com/customer-reviews">original</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="customer-reviews/MULTI_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/customer-reviews/MULTI_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">0.0 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            
+            
+            <div class="row slide printer-leasing">
+              <a class="path" name="printer-leasing"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>0px - /printer-leasing</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="printer-leasing/MULTI_casperjs_original_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/printer-leasing/MULTI_casperjs_original_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="printer-leasing/MULTI_casperjs_original.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/printer-leasing/MULTI_casperjs_original.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://www.gflesch.com/financing-solutions">original</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="printer-leasing/MULTI_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/printer-leasing/MULTI_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">0.0 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            
+            
+            <div class="row slide managed-print-case-study">
+              <a class="path" name="managed-print-case-study"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>0px - /managed-print-case-study</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="managed-print-case-study/MULTI_casperjs_original_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/managed-print-case-study/MULTI_casperjs_original_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="managed-print-case-study/MULTI_casperjs_original.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/managed-print-case-study/MULTI_casperjs_original.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://www.gflesch.com/case-studies/managed-print-case-study-roush-honda">original</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="managed-print-case-study/MULTI_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/managed-print-case-study/MULTI_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">0.0 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            
+            
+            <div class="row slide manufacturing">
+              <a class="path" name="manufacturing"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>0px - /manufacturing</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="manufacturing/MULTI_casperjs_original_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/manufacturing/MULTI_casperjs_original_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="manufacturing/MULTI_casperjs_original.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/manufacturing/MULTI_casperjs_original.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://www.gflesch.com/who-we-serve/manufacturing">original</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="manufacturing/MULTI_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/manufacturing/MULTI_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">0.0 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            
+            
+            <div class="row slide cedar-falls-contact">
+              <a class="path" name="cedar-falls-contact"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>0px - /cedar-falls-contact</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="cedar-falls-contact/MULTI_casperjs_original_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/cedar-falls-contact/MULTI_casperjs_original_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="cedar-falls-contact/MULTI_casperjs_original.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/cedar-falls-contact/MULTI_casperjs_original.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://www.gflesch.com/contact-us/cedar-falls-ia">original</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="cedar-falls-contact/MULTI_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/cedar-falls-contact/MULTI_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">0.0 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            
+            
+            <div class="row slide blog">
+              <a class="path" name="blog"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>0px - /blog</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="blog/MULTI_casperjs_original_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/blog/MULTI_casperjs_original_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="blog/MULTI_casperjs_original.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/blog/MULTI_casperjs_original.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://www.gflesch.com/blog">original</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="blog/MULTI_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/blog/MULTI_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">0.0 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            
+            
+            <div class="row slide gfc-news">
+              <a class="path" name="gfc-news"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>0px - /gfc-news</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="gfc-news/MULTI_casperjs_original_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/gfc-news/MULTI_casperjs_original_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="gfc-news/MULTI_casperjs_original.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/gfc-news/MULTI_casperjs_original.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://www.gflesch.com/news">original</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="gfc-news/MULTI_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/gfc-news/MULTI_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">0.0 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            
+            
+            <div class="row slide faqs">
+              <a class="path" name="faqs"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>0px - /faqs</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="faqs/MULTI_casperjs_original_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/faqs/MULTI_casperjs_original_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="faqs/MULTI_casperjs_original.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/faqs/MULTI_casperjs_original.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://www.gflesch.com/the-gfc-difference/frequently-asked-questions">original</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="faqs/MULTI_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/faqs/MULTI_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">0.0 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            
+            
+            <div class="row slide business-technology-resources">
+              <a class="path" name="business-technology-resources"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>0px - /business-technology-resources</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="business-technology-resources/MULTI_casperjs_original_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/business-technology-resources/MULTI_casperjs_original_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="business-technology-resources/MULTI_casperjs_original.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/business-technology-resources/MULTI_casperjs_original.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://www.gflesch.com/resources">original</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="business-technology-resources/MULTI_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/business-technology-resources/MULTI_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">0.0 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            
+            
+            <div class="row slide gfconsulting-group">
+              <a class="path" name="gfconsulting-group"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>0px - /gfconsulting-group</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="gfconsulting-group/MULTI_casperjs_original_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/gfconsulting-group/MULTI_casperjs_original_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="gfconsulting-group/MULTI_casperjs_original.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/gfconsulting-group/MULTI_casperjs_original.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://www.gflesch.com/gfconsulting">original</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="gfconsulting-group/MULTI_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/gfconsulting-group/MULTI_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">0.0 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            
+            
+            <div class="row slide printers">
+              <a class="path" name="printers"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>0px - /printers</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="printers/MULTI_casperjs_original_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/printers/MULTI_casperjs_original_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="printers/MULTI_casperjs_original.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/printers/MULTI_casperjs_original.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://www.gflesch.com/hardware/printers">original</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="printers/MULTI_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/printers/MULTI_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">0.0 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            
+            
+            <div class="row slide ibm-cognos-analytics">
+              <a class="path" name="ibm-cognos-analytics"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>0px - /ibm-cognos-analytics</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="ibm-cognos-analytics/MULTI_casperjs_original_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/ibm-cognos-analytics/MULTI_casperjs_original_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="ibm-cognos-analytics/MULTI_casperjs_original.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/ibm-cognos-analytics/MULTI_casperjs_original.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://www.gflesch.com/ai-solutions/ibm-cognos-analytics">original</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="ibm-cognos-analytics/MULTI_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/ibm-cognos-analytics/MULTI_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">0.0 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            
+            
+            <div class="row slide virtual-cio-services">
+              <a class="path" name="virtual-cio-services"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>0px - /virtual-cio-services</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="virtual-cio-services/MULTI_casperjs_original_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/virtual-cio-services/MULTI_casperjs_original_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="virtual-cio-services/MULTI_casperjs_original.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/virtual-cio-services/MULTI_casperjs_original.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://www.gflesch.com/vcio">original</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="virtual-cio-services/MULTI_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/virtual-cio-services/MULTI_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">0.0 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            
+            
+            <div class="row slide ibm-watson-assistant">
+              <a class="path" name="ibm-watson-assistant"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>0px - /ibm-watson-assistant</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="ibm-watson-assistant/MULTI_casperjs_original_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/ibm-watson-assistant/MULTI_casperjs_original_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="ibm-watson-assistant/MULTI_casperjs_original.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/ibm-watson-assistant/MULTI_casperjs_original.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://www.gflesch.com/ai-solutions/watson-assistant">original</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="ibm-watson-assistant/MULTI_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/ibm-watson-assistant/MULTI_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">0.0 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            
+            
+            <div class="row slide appleton-area-school-district">
+              <a class="path" name="appleton-area-school-district"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>0px - /appleton-area-school-district</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="appleton-area-school-district/MULTI_casperjs_original_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/appleton-area-school-district/MULTI_casperjs_original_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="appleton-area-school-district/MULTI_casperjs_original.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/appleton-area-school-district/MULTI_casperjs_original.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://www.gflesch.com/aasd-case-study-lp">original</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="appleton-area-school-district/MULTI_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/appleton-area-school-district/MULTI_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">0.0 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            
+            
+            <div class="row slide the-beginners-guide-to-managed-print-services">
+              <a class="path" name="the-beginners-guide-to-managed-print-services"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>0px - /the-beginners-guide-to-managed-print-services</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="the-beginners-guide-to-managed-print-services/MULTI_casperjs_original_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/the-beginners-guide-to-managed-print-services/MULTI_casperjs_original_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="the-beginners-guide-to-managed-print-services/MULTI_casperjs_original.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/the-beginners-guide-to-managed-print-services/MULTI_casperjs_original.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://www.gflesch.com/beginners-guide-to-managed-print-services">original</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="the-beginners-guide-to-managed-print-services/MULTI_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/the-beginners-guide-to-managed-print-services/MULTI_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">0.0 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            
+            
+            <div class="row slide ricoh-products">
+              <a class="path" name="ricoh-products"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>0px - /ricoh-products</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="ricoh-products/MULTI_casperjs_original_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/ricoh-products/MULTI_casperjs_original_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="ricoh-products/MULTI_casperjs_original.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/ricoh-products/MULTI_casperjs_original.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://www.gflesch.com/ricoh-products-information">original</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="ricoh-products/MULTI_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/ricoh-products/MULTI_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">0.0 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            
+            
+            <div class="row slide traditional-it-department-vs-managed-it-comparison-chart">
+              <a class="path" name="traditional-it-department-vs-managed-it-comparison-chart"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>0px - /traditional-it-department-vs-managed-it-comparison-chart</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="traditional-it-department-vs-managed-it-comparison-chart/MULTI_casperjs_original_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/traditional-it-department-vs-managed-it-comparison-chart/MULTI_casperjs_original_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="traditional-it-department-vs-managed-it-comparison-chart/MULTI_casperjs_original.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/traditional-it-department-vs-managed-it-comparison-chart/MULTI_casperjs_original.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://www.gflesch.com/traditional-it-department-vs-managed-it">original</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="traditional-it-department-vs-managed-it-comparison-chart/MULTI_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/traditional-it-department-vs-managed-it-comparison-chart/MULTI_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">0.0 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            
+            
+            <div class="row slide terms-and-conditions">
+              <a class="path" name="terms-and-conditions"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>0px - /terms-and-conditions</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="terms-and-conditions/MULTI_casperjs_original_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/terms-and-conditions/MULTI_casperjs_original_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="terms-and-conditions/MULTI_casperjs_original.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/terms-and-conditions/MULTI_casperjs_original.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://www.gflesch.com/terms-and-conditions">original</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="terms-and-conditions/MULTI_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/terms-and-conditions/MULTI_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">0.0 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            
+            
+            <div class="row slide security-policy">
+              <a class="path" name="security-policy"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>0px - /security-policy</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="security-policy/MULTI_casperjs_original_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/security-policy/MULTI_casperjs_original_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="security-policy/MULTI_casperjs_original.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/security-policy/MULTI_casperjs_original.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://www.gflesch.com/security-policy">original</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="security-policy/MULTI_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/security-policy/MULTI_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">0.0 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            
+            
+            <div class="row slide contact-indy">
+              <a class="path" name="contact-indy"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>0px - /contact-indy</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="contact-indy/MULTI_casperjs_original_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/contact-indy/MULTI_casperjs_original_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="contact-indy/MULTI_casperjs_original.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/contact-indy/MULTI_casperjs_original.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://www.gflesch.com/contact-us/indianapolis">original</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="contact-indy/MULTI_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/contact-indy/MULTI_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">0.0 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            
+            
+            <div class="row slide gfc-news-topic">
+              <a class="path" name="gfc-news-topic"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>0px - /gfc-news-topic</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="gfc-news-topic/MULTI_casperjs_original_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/gfc-news-topic/MULTI_casperjs_original_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="gfc-news-topic/MULTI_casperjs_original.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/gfc-news-topic/MULTI_casperjs_original.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://www.gflesch.com/news/topic/gordon-flesch-company-news">original</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="gfc-news-topic/MULTI_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/gfc-news-topic/MULTI_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">0.0 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            
+            
+            <div class="row slide order-supplies">
+              <a class="path" name="order-supplies"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>0px - /order-supplies</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="order-supplies/MULTI_casperjs_original_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/order-supplies/MULTI_casperjs_original_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="order-supplies/MULTI_casperjs_original.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/order-supplies/MULTI_casperjs_original.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://www.gflesch.com/client-tools/order-supplies">original</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="order-supplies/MULTI_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/order-supplies/MULTI_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">0.0 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            
+            
+            <div class="row slide production-printers">
+              <a class="path" name="production-printers"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>0px - /production-printers</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="production-printers/MULTI_casperjs_original_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/production-printers/MULTI_casperjs_original_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="production-printers/MULTI_casperjs_original.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/production-printers/MULTI_casperjs_original.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://www.gflesch.com/hardware/production-printers">original</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="production-printers/MULTI_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/production-printers/MULTI_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">0.0 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            
+            
+            <div class="row slide contact-us">
+              <a class="path" name="contact-us"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>0px - /contact-us</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="contact-us/MULTI_casperjs_original_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/contact-us/MULTI_casperjs_original_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="contact-us/MULTI_casperjs_original.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/contact-us/MULTI_casperjs_original.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://www.gflesch.com/financing-solutions/contact-us">original</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="contact-us/MULTI_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/contact-us/MULTI_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">0.0 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            
+            
+            <div class="row slide custom-workflow-integrations">
+              <a class="path" name="custom-workflow-integrations"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>0px - /custom-workflow-integrations</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="custom-workflow-integrations/MULTI_casperjs_original_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/custom-workflow-integrations/MULTI_casperjs_original_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="custom-workflow-integrations/MULTI_casperjs_original.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/custom-workflow-integrations/MULTI_casperjs_original.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://www.gflesch.com/software/custom-workflow-integrations">original</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="custom-workflow-integrations/MULTI_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/custom-workflow-integrations/MULTI_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">0.0 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            
+            
+            <div class="row slide askgordy-features-ai-application-for-ecm-systems">
+              <a class="path" name="askgordy-features-ai-application-for-ecm-systems"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>0px - /askgordy-features-ai-application-for-ecm-systems</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="askgordy-features-ai-application-for-ecm-systems/MULTI_casperjs_original_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/askgordy-features-ai-application-for-ecm-systems/MULTI_casperjs_original_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="askgordy-features-ai-application-for-ecm-systems/MULTI_casperjs_original.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/askgordy-features-ai-application-for-ecm-systems/MULTI_casperjs_original.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://www.gflesch.com/ai-solutions/askgordy-features">original</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="askgordy-features-ai-application-for-ecm-systems/MULTI_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/askgordy-features-ai-application-for-ecm-systems/MULTI_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">0.0 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            
+            
+            <div class="row slide scanners">
+              <a class="path" name="scanners"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>0px - /scanners</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="scanners/MULTI_casperjs_original_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/scanners/MULTI_casperjs_original_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="scanners/MULTI_casperjs_original.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/scanners/MULTI_casperjs_original.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://www.gflesch.com/hardware/scanners">original</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="scanners/MULTI_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/scanners/MULTI_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">0.0 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            
+            
+            <div class="row slide office-copiers">
+              <a class="path" name="office-copiers"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>0px - /office-copiers</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="office-copiers/MULTI_casperjs_original_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/office-copiers/MULTI_casperjs_original_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="office-copiers/MULTI_casperjs_original.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/office-copiers/MULTI_casperjs_original.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://www.gflesch.com/hardware/office-copiers">original</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="office-copiers/MULTI_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/office-copiers/MULTI_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">0.0 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            
+            
+            <div class="row slide gfc-news-subscription">
+              <a class="path" name="gfc-news-subscription"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>0px - /gfc-news-subscription</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="gfc-news-subscription/MULTI_casperjs_original_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/gfc-news-subscription/MULTI_casperjs_original_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="gfc-news-subscription/MULTI_casperjs_original.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/gfc-news-subscription/MULTI_casperjs_original.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://www.gflesch.com/news-subscription">original</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="gfc-news-subscription/MULTI_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/gfc-news-subscription/MULTI_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">0.0 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            
+            
+            <div class="row slide our-team">
+              <a class="path" name="our-team"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>0px - /our-team</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="our-team/MULTI_casperjs_original_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/our-team/MULTI_casperjs_original_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="our-team/MULTI_casperjs_original.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/our-team/MULTI_casperjs_original.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://www.gflesch.com/the-gfc-difference/our-team">original</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="our-team/MULTI_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/our-team/MULTI_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">0.0 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            
+            
+            <div class="row slide finance">
+              <a class="path" name="finance"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>0px - /finance</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="finance/MULTI_casperjs_original_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/finance/MULTI_casperjs_original_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="finance/MULTI_casperjs_original.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/finance/MULTI_casperjs_original.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://www.gflesch.com/who-we-serve/finance">original</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="finance/MULTI_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/finance/MULTI_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">0.0 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            
+            
+            <div class="row slide customer-financing-solutions">
+              <a class="path" name="customer-financing-solutions"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>0px - /customer-financing-solutions</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="customer-financing-solutions/MULTI_casperjs_original_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/customer-financing-solutions/MULTI_casperjs_original_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="customer-financing-solutions/MULTI_casperjs_original.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/customer-financing-solutions/MULTI_casperjs_original.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://www.gflesch.com/financing-solutions/customer">original</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="customer-financing-solutions/MULTI_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/customer-financing-solutions/MULTI_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">0.0 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            
+            
+            <div class="row slide hybrid-cloud-services">
+              <a class="path" name="hybrid-cloud-services"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>0px - /hybrid-cloud-services</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="hybrid-cloud-services/MULTI_casperjs_original_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/hybrid-cloud-services/MULTI_casperjs_original_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="hybrid-cloud-services/MULTI_casperjs_original.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/hybrid-cloud-services/MULTI_casperjs_original.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://www.gflesch.com/cloud-services">original</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="hybrid-cloud-services/MULTI_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/hybrid-cloud-services/MULTI_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">0.0 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            
+            
+            <div class="row slide proactive-cybersecurity-services">
+              <a class="path" name="proactive-cybersecurity-services"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>0px - /proactive-cybersecurity-services</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="proactive-cybersecurity-services/MULTI_casperjs_original_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/proactive-cybersecurity-services/MULTI_casperjs_original_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="proactive-cybersecurity-services/MULTI_casperjs_original.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/proactive-cybersecurity-services/MULTI_casperjs_original.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://www.gflesch.com/proactive-cybersecurity-services">original</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="proactive-cybersecurity-services/MULTI_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/proactive-cybersecurity-services/MULTI_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">0.0 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            
+            
+            <div class="row slide the-gfc-difference">
+              <a class="path" name="the-gfc-difference"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>0px - /the-gfc-difference</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="the-gfc-difference/MULTI_casperjs_original_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/the-gfc-difference/MULTI_casperjs_original_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="the-gfc-difference/MULTI_casperjs_original.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/the-gfc-difference/MULTI_casperjs_original.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://www.gflesch.com/the-gfc-difference">original</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="the-gfc-difference/MULTI_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/the-gfc-difference/MULTI_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">0.0 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            
+            
+            <div class="row slide managed-services">
+              <a class="path" name="managed-services"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>0px - /managed-services</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="managed-services/MULTI_casperjs_original_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/managed-services/MULTI_casperjs_original_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="managed-services/MULTI_casperjs_original.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/managed-services/MULTI_casperjs_original.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://www.gflesch.com/managed-services">original</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="managed-services/MULTI_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/managed-services/MULTI_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">0.0 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            
+            
+            <div class="row slide production-print">
+              <a class="path" name="production-print"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>0px - /production-print</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="production-print/MULTI_casperjs_original_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/production-print/MULTI_casperjs_original_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="production-print/MULTI_casperjs_original.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/production-print/MULTI_casperjs_original.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://www.gflesch.com/who-we-serve/production-print">original</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="production-print/MULTI_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/production-print/MULTI_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">0.0 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            
+            
+            <div class="row slide recycle-services">
+              <a class="path" name="recycle-services"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>0px - /recycle-services</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="recycle-services/MULTI_casperjs_original_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/recycle-services/MULTI_casperjs_original_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="recycle-services/MULTI_casperjs_original.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/recycle-services/MULTI_casperjs_original.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://www.gflesch.com/client-tools/recycle-services">original</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="recycle-services/MULTI_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/recycle-services/MULTI_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">0.0 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            
+            
+            <div class="row slide client-tools">
+              <a class="path" name="client-tools"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>0px - /client-tools</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="client-tools/MULTI_casperjs_original_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/client-tools/MULTI_casperjs_original_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="client-tools/MULTI_casperjs_original.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/client-tools/MULTI_casperjs_original.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://www.gflesch.com/client-tools">original</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="client-tools/MULTI_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/client-tools/MULTI_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">0.0 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            
+            
+            <div class="row slide non-profits">
+              <a class="path" name="non-profits"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>0px - /non-profits</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="non-profits/MULTI_casperjs_original_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/non-profits/MULTI_casperjs_original_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="non-profits/MULTI_casperjs_original.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/non-profits/MULTI_casperjs_original.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://www.gflesch.com/who-we-serve/non-profits">original</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="non-profits/MULTI_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/non-profits/MULTI_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">0.0 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            
+            
+            <div class="row slide managed-print-services">
+              <a class="path" name="managed-print-services"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>0px - /managed-print-services</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="managed-print-services/MULTI_casperjs_original_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/managed-print-services/MULTI_casperjs_original_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="managed-print-services/MULTI_casperjs_original.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/managed-print-services/MULTI_casperjs_original.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://www.gflesch.com/managed-print-services">original</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="managed-print-services/MULTI_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/managed-print-services/MULTI_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">0.0 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            
+            
+            <div class="row slide legal">
+              <a class="path" name="legal"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>0px - /legal</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="legal/MULTI_casperjs_original_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/legal/MULTI_casperjs_original_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="legal/MULTI_casperjs_original.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/legal/MULTI_casperjs_original.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://www.gflesch.com/who-we-serve/legal">original</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="legal/MULTI_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/legal/MULTI_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">0.0 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            
+            
+            <div class="row slide ai-solutions">
+              <a class="path" name="ai-solutions"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>0px - /ai-solutions</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="ai-solutions/MULTI_casperjs_original_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/ai-solutions/MULTI_casperjs_original_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="ai-solutions/MULTI_casperjs_original.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/ai-solutions/MULTI_casperjs_original.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://www.gflesch.com/ai-solutions">original</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="ai-solutions/MULTI_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/ai-solutions/MULTI_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">0.0 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            
+            
+            <div class="row slide canon-products">
+              <a class="path" name="canon-products"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>0px - /canon-products</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="canon-products/MULTI_casperjs_original_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/canon-products/MULTI_casperjs_original_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="canon-products/MULTI_casperjs_original.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/canon-products/MULTI_casperjs_original.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://www.gflesch.com/canon-products-information">original</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="canon-products/MULTI_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/canon-products/MULTI_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">0.0 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            
+            
+            <div class="row slide our-history">
+              <a class="path" name="our-history"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>0px - /our-history</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="our-history/MULTI_casperjs_original_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/our-history/MULTI_casperjs_original_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="our-history/MULTI_casperjs_original.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/our-history/MULTI_casperjs_original.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://www.gflesch.com/the-gfc-difference/our-history">original</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="our-history/MULTI_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/our-history/MULTI_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">0.0 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            
+            
+            <div class="row slide contact-us-geneva">
+              <a class="path" name="contact-us-geneva"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>0px - /contact-us-geneva</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="contact-us-geneva/MULTI_casperjs_original_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/contact-us-geneva/MULTI_casperjs_original_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="contact-us-geneva/MULTI_casperjs_original.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/contact-us-geneva/MULTI_casperjs_original.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://www.gflesch.com/contact-us/geneva">original</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="contact-us-geneva/MULTI_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/contact-us-geneva/MULTI_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">0.0 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            
+            
+            <div class="row slide insurance">
+              <a class="path" name="insurance"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>0px - /insurance</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="insurance/MULTI_casperjs_original_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/insurance/MULTI_casperjs_original_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="insurance/MULTI_casperjs_original.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/insurance/MULTI_casperjs_original.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://www.gflesch.com/who-we-serve/insurance">original</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="insurance/MULTI_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/insurance/MULTI_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">0.0 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            
+            
+            <div class="row slide equipment">
+              <a class="path" name="equipment"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>0px - /equipment</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="equipment/MULTI_casperjs_original_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/equipment/MULTI_casperjs_original_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="equipment/MULTI_casperjs_original.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/equipment/MULTI_casperjs_original.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://www.gflesch.com/financing-solutions/equipment">original</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="equipment/MULTI_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/equipment/MULTI_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">0.0 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            
+            
+            <div class="row slide the-quick-guide-to-print-security">
+              <a class="path" name="the-quick-guide-to-print-security"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>0px - /the-quick-guide-to-print-security</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="the-quick-guide-to-print-security/MULTI_casperjs_original_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/the-quick-guide-to-print-security/MULTI_casperjs_original_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="the-quick-guide-to-print-security/MULTI_casperjs_original.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/the-quick-guide-to-print-security/MULTI_casperjs_original.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://www.gflesch.com/quick-guide-to-print-security-lp">original</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="the-quick-guide-to-print-security/MULTI_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/the-quick-guide-to-print-security/MULTI_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">0.0 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            
+            
+            <div class="row slide health-care">
+              <a class="path" name="health-care"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>0px - /health-care</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="health-care/MULTI_casperjs_original_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/health-care/MULTI_casperjs_original_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="health-care/MULTI_casperjs_original.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/health-care/MULTI_casperjs_original.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://www.gflesch.com/who-we-serve/health-care">original</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="health-care/MULTI_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/health-care/MULTI_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">0.0 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            
+            
+            <div class="row slide small-medium-businesses">
+              <a class="path" name="small-medium-businesses"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>0px - /small-medium-businesses</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="small-medium-businesses/MULTI_casperjs_original_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/small-medium-businesses/MULTI_casperjs_original_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="small-medium-businesses/MULTI_casperjs_original.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/small-medium-businesses/MULTI_casperjs_original.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://www.gflesch.com/who-we-serve/small-medium-businesses">original</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="small-medium-businesses/MULTI_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/small-medium-businesses/MULTI_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">0.0 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            
+            
+            <div class="row slide business-technology-events">
+              <a class="path" name="business-technology-events"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>0px - /business-technology-events</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="business-technology-events/MULTI_casperjs_original_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/business-technology-events/MULTI_casperjs_original_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="business-technology-events/MULTI_casperjs_original.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/business-technology-events/MULTI_casperjs_original.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://www.gflesch.com/events">original</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="business-technology-events/MULTI_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/business-technology-events/MULTI_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">0.0 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            
+            
+            <div class="row slide applications-and-services">
+              <a class="path" name="applications-and-services"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>0px - /applications-and-services</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="applications-and-services/MULTI_casperjs_original_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/applications-and-services/MULTI_casperjs_original_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="applications-and-services/MULTI_casperjs_original.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/applications-and-services/MULTI_casperjs_original.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://www.gflesch.com/ai-solutions/applications-and-services">original</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="applications-and-services/MULTI_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/applications-and-services/MULTI_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">0.0 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            
+            
+            <div class="row slide large-format-printers">
+              <a class="path" name="large-format-printers"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>0px - /large-format-printers</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="large-format-printers/MULTI_casperjs_original_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/large-format-printers/MULTI_casperjs_original_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="large-format-printers/MULTI_casperjs_original.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/large-format-printers/MULTI_casperjs_original.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://www.gflesch.com/hardware/large-format-printers">original</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="large-format-printers/MULTI_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/large-format-printers/MULTI_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">0.0 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            
+            
+            <div class="row slide pay-online">
+              <a class="path" name="pay-online"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>0px - /pay-online</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="pay-online/MULTI_casperjs_original_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/pay-online/MULTI_casperjs_original_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="pay-online/MULTI_casperjs_original.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/pay-online/MULTI_casperjs_original.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://www.gflesch.com/client-tools/pay-online">original</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="pay-online/MULTI_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/pay-online/MULTI_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">0.0 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            
+            
+            <div class="row slide the-ultimate-guide-to-managed-it">
+              <a class="path" name="the-ultimate-guide-to-managed-it"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>0px - /the-ultimate-guide-to-managed-it</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="the-ultimate-guide-to-managed-it/MULTI_casperjs_original_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/the-ultimate-guide-to-managed-it/MULTI_casperjs_original_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="the-ultimate-guide-to-managed-it/MULTI_casperjs_original.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/the-ultimate-guide-to-managed-it/MULTI_casperjs_original.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://www.gflesch.com/guide-to-managed-it">original</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="the-ultimate-guide-to-managed-it/MULTI_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/the-ultimate-guide-to-managed-it/MULTI_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">0.0 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            
+            
+            <div class="row slide guide-to-cybersecurity-for-business">
+              <a class="path" name="guide-to-cybersecurity-for-business"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>0px - /guide-to-cybersecurity-for-business</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="guide-to-cybersecurity-for-business/MULTI_casperjs_original_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/guide-to-cybersecurity-for-business/MULTI_casperjs_original_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="guide-to-cybersecurity-for-business/MULTI_casperjs_original.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/guide-to-cybersecurity-for-business/MULTI_casperjs_original.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://www.gflesch.com/cybersecurity-for-business">original</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="guide-to-cybersecurity-for-business/MULTI_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/guide-to-cybersecurity-for-business/MULTI_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">0.0 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            
+            
+            <div class="row slide home">
+              <a class="path" name="home"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>0px - /home</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="home/MULTI_casperjs_original_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/home/MULTI_casperjs_original_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="home/MULTI_casperjs_original.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/home/MULTI_casperjs_original.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://www.gflesch.com/">original</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="home/MULTI_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/home/MULTI_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">0.0 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            
+            
+            <div class="row slide it-hardware-as-a-service">
+              <a class="path" name="it-hardware-as-a-service"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>0px - /it-hardware-as-a-service</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="it-hardware-as-a-service/MULTI_casperjs_original_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/it-hardware-as-a-service/MULTI_casperjs_original_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="it-hardware-as-a-service/MULTI_casperjs_original.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/it-hardware-as-a-service/MULTI_casperjs_original.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://www.gflesch.com/hardware/it-hardware">original</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="it-hardware-as-a-service/MULTI_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/it-hardware-as-a-service/MULTI_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">0.0 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            
+            
+            <div class="row slide vendor-financing-solutions">
+              <a class="path" name="vendor-financing-solutions"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>0px - /vendor-financing-solutions</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="vendor-financing-solutions/MULTI_casperjs_original_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/vendor-financing-solutions/MULTI_casperjs_original_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="vendor-financing-solutions/MULTI_casperjs_original.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/vendor-financing-solutions/MULTI_casperjs_original.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://www.gflesch.com/financing-solutions/vendor">original</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="vendor-financing-solutions/MULTI_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/vendor-financing-solutions/MULTI_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">0.0 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            
+            
+            <div class="row slide gfc-case-studies">
+              <a class="path" name="gfc-case-studies"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>0px - /gfc-case-studies</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="gfc-case-studies/MULTI_casperjs_original_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/gfc-case-studies/MULTI_casperjs_original_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="gfc-case-studies/MULTI_casperjs_original.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/gfc-case-studies/MULTI_casperjs_original.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://www.gflesch.com/case-studies">original</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="gfc-case-studies/MULTI_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/gfc-case-studies/MULTI_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">0.0 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            
+            
+            <div class="row slide contact">
+              <a class="path" name="contact"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>0px - /contact</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="contact/MULTI_casperjs_original_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/contact/MULTI_casperjs_original_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="contact/MULTI_casperjs_original.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/contact/MULTI_casperjs_original.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://www.gflesch.com/contact-us">original</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="contact/MULTI_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/contact/MULTI_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">0.0 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            
+            
+            <div class="row slide device-drivers-and-utilities">
+              <a class="path" name="device-drivers-and-utilities"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>0px - /device-drivers-and-utilities</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="device-drivers-and-utilities/MULTI_casperjs_original_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/device-drivers-and-utilities/MULTI_casperjs_original_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="device-drivers-and-utilities/MULTI_casperjs_original.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/device-drivers-and-utilities/MULTI_casperjs_original.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://www.gflesch.com/client-tools/device-drivers-and-utilites">original</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="device-drivers-and-utilities/MULTI_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/device-drivers-and-utilities/MULTI_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">0.0 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            
+            
+            <div class="row slide blog-author">
+              <a class="path" name="blog-author"></a>
+              <div class="col-sm-12 text-center">
+                
+                
+                <h4>0px - /blog-author</h4>
+                
+                
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="blog-author/MULTI_casperjs_original_latest.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/blog-author/MULTI_casperjs_original_latest.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="">latest</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                <a class="shot" href="blog-author/MULTI_casperjs_original.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/blog-author/MULTI_casperjs_original.png">
+                </a>
+                <p class="text-center"><a target="_blank" href="https://www.gflesch.com/blog/author/kelly-glaser">original</a></p>
+              </div>
+              
+              <div class="col-sm-4">
+                
+                <a class="shot" href="blog-author/MULTI_casperjs_diff.png">
+                  <img class="short-screenshot img-thumbnail" src="thumbnails/blog-author/MULTI_casperjs_diff.png">
+                </a>
+                
+                <p class="text-center">diff</p>
+              </div>
+              <div class="difference col-sm-12">
+                
+                
+                <h4 class="text-center text-muted">0.0 % different<span class="compare"></span></h4>
+                
+                
+              </div>
+            </div>
+            
+            
+          </div>
+          <div class="next col-sm-1"><span></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

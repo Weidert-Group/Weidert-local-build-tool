@@ -1,0 +1,167 @@
+##############################################################
+##############################################################
+# This is an example configuration provided by Wraith.
+# Feel free to amend for your own requirements.
+# ---
+# This particular config is intended to demonstrate how
+# to use Wraith in 'history' mode, which is best suited to
+# making sure your site's appearance remains consistent over
+# time.
+#
+# `wraith history history.yaml` # generate base screenshots
+# `wraith latest history.yaml`  # take new shots and compare
+#
+##############################################################
+##############################################################
+
+# (required) The engine to run Wraith with. Examples: 'phantomjs', 'casperjs', 'slimerjs'
+browser: "casperjs"
+
+# (required) The domain to take screenshots of.
+domains:
+  original: "https://www.gflesch.com"
+
+# (required) The paths to capture. This particular config is using casperjs, so we can take screenshots of selectors rather than the entire page.
+paths:
+  home: /
+  ai-solutions: /ai-solutions
+  blog: /blog
+  blog-post: /blog/5-top-mps-questions
+  blog-author: /blog/author/kelly-glaser
+  blog-topic: /blog/topic/financing
+  contact: /contact-us
+  who-we-serve: /who-we-serve
+  direct-phone-numbers: /direct-phone-numbers
+  recycle-services: /client-tools/recycle-services
+  proactive-cybersecurity-services: /proactive-cybersecurity-services
+  enterprise: /who-we-serve/enterprise
+  production-print: /who-we-serve/production-print
+  integrated-solutions: /software/integrated-solutions
+  faqs: /the-gfc-difference/frequently-asked-questions
+  managed-services: /managed-services
+  technical-support: /client-tools/technical-support
+  gfc-news: /news
+  askgordy-ai-application-for-ecm-systems: /ai-solutions/askgordy
+  interactive-displays: /hardware/other
+  insurance: /who-we-serve/insurance
+  business-technology-vidoes: /videos
+  legal: /who-we-serve/legal
+  business-technology-events: /events
+  custom-workflow-integrations: /software/custom-workflow-integrations
+  office-copiers: /hardware/office-copiers
+  onsite-services: /onsite-services
+  scanners: /hardware/scanners
+  contact-milwaukee: /contact-us/milwaukee
+  the-gfc-difference: /the-gfc-difference
+  education: /who-we-serve/education
+  guide-to-managed-print-services: /managed-print-services-guide
+  giving-back: /the-gfc-difference/giving-back
+  finance: /who-we-serve/finance
+  printers: /hardware/printers
+  production-printers: /hardware/production-printers
+  it-hardware-as-a-service: /hardware/it-hardware
+  customer-financing-solutions: /financing-solutions/customer
+  managed-print-services: /managed-print-services
+  contact-us: /financing-solutions/contact-us
+  contact-us-geneva: /contact-us/geneva
+  small-medium-businesses: /who-we-serve/small-medium-businesses
+  business-technology-resources: /resources
+  security-policy: /security-policy
+  traditional-it-department-vs-managed-it-comparison-chart: /traditional-it-department-vs-managed-it
+  equipment: /financing-solutions/equipment
+  terms-and-conditions: /terms-and-conditions
+  contact-fox-valley: /contact-us/fox-valley
+  large-format-printers: /hardware/large-format-printers
+  printer-leasing: /financing-solutions
+  guide-to-cybersecurity-for-business: /cybersecurity-for-business
+  products: /products
+  enterprise-content-management: /software/enterprise-content-management
+  our-history: /the-gfc-difference/our-history
+  news-post: /news/gfc-acquires-advanced-systems
+  vendor-financing-solutions: /financing-solutions/vendor
+  customer-reviews: /customer-reviews
+  health-care: /who-we-serve/health-care
+  pay-online: /client-tools/pay-online
+  managed-it-services: /managed-it-services
+  gfc-case-studies: /case-studies
+  our-team: /the-gfc-difference/our-team
+  manufacturing: /who-we-serve/manufacturing
+  order-supplies: /client-tools/order-supplies
+  contact-columbus: /contact-us/columbus
+  client-tools: /client-tools
+  ibm-watson-assistant: /ai-solutions/watson-assistant
+  hybrid-cloud-services: /cloud-services
+  virtual-cio-services: /vcio
+  device-drivers-and-utilities: /client-tools/device-drivers-and-utilites
+  careers: /careers
+  ibm-cognos-analytics: /ai-solutions/ibm-cognos-analytics
+  contact-indy: /contact-us/indianapolis
+  gfconsulting-group: /gfconsulting
+  non-profits: /who-we-serve/non-profits
+  the-ultimate-guide-to-managed-it: /guide-to-managed-it
+  applications-and-services: /ai-solutions/applications-and-services
+  managed-print-case-study: /case-studies/managed-print-case-study-roush-honda
+  gfc-news-topic: /news/topic/gordon-flesch-company-news
+  lexmark-mfp-printer-products: /lexmark-products-information
+  gfc-blog-subscription: /blog-subscription
+  gfc-news-subscription: /news-subscription
+  askgordy-pricing-ai-application: /ai-solutions/askgordy-pricing
+  the-beginners-guide-to-managed-print-services: /beginners-guide-to-managed-print-services
+  go-green-with-managed-print: /go-green-with-managed-print-lp
+  appleton-area-school-district: /aasd-case-study-lp
+  cybersecurity-for-your-printer: /cybersecurity-for-your-printer-lp
+  the-quick-guide-to-print-security: /quick-guide-to-print-security-lp
+  askgordy-resources-ai-application-for-ecm-systems: /ai-solutions/askgordy-resources
+  canon-products: /canon-products-information
+  cedar-falls-contact: /contact-us/cedar-falls-ia
+  ricoh-products: /ricoh-products-information
+  askgordy-features-ai-application-for-ecm-systems: /ai-solutions/askgordy-features
+
+# (optional) JavaScript file to execute before taking screenshot of every path. Default: nil
+before_capture: 'javascript/wait--casper.js'
+
+# (required) Screen widths (and optional height) to resize the browser to before taking the screenshot.
+screen_widths:
+  - 1280
+
+# (optional) Resize to each screen width (efficient), or reload at each screen width (costly). Default: 'reload'
+resize_or_reload: 'resize'
+
+# (required for history mode, otherwise optional) The directory that your base screenshots will be stored in.
+history_dir: 'shots_base'
+
+# (required) The directory that your latest screenshots will be stored in
+directory: 'shots'
+
+# (required) Amount of fuzz ImageMagick will use when comparing images. A higher fuzz makes the comparison less strict.
+fuzz: '20%'
+
+# (optional) The maximum acceptable level of difference (in %) between two images before Wraith reports a failure. Default: 0
+threshold: 5
+
+# (optional) Specify the template (and generated thumbnail sizes) for the gallery output.
+gallery:
+  template: 'slideshow_template' # Examples: 'basic_template' (default), 'slideshow_template'
+  thumb_width:  200
+  thumb_height: 200
+
+# (optional) Choose which results are displayed in the gallery, and in what order. Default: alphanumeric
+# Options:
+#   alphanumeric - all paths (with or without a difference) are shown, sorted by path
+#   diffs_first - all paths (with or without a difference) are shown, sorted by difference size (largest first)
+#   diffs_only - only paths with a difference are shown, sorted by difference size (largest first)
+# Note: different screen widths are always grouped together.
+mode: diffs_first
+
+# (optional) Choose to run Wraith in verbose mode, for easier debugging. Default: false
+verbose: true
+
+# (optional) Color to highlight the image diff. Default: 'blue'
+highlight_color: red
+
+# (optional) Parameters to pass to Phantom/Casper command line. Default: '--ignore-ssl-errors=true --ssl-protocol=tlsv1'
+phantomjs_options: ''
+
+# (optional) Set the number of threads to use when saving images. Raising this value can improve performance, but very high
+# values can lead to server connection issues. Set to around 1.5 the available CPU cores for best performance. Default: 8
+threads: 8
